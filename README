@@ -1,0 +1,4 @@
+Installation
+============
+
+Copy the files to ~/.vim/syntax and ~/.vim/ftdetect respectively, and restart Vim.
