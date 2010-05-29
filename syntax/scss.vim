@@ -9,9 +9,16 @@ endif
 
 runtime! syntax/css.vim
 
+syn case ignore
+
 syn match scssVariable "$[[:alnum:]_-]\+"
 syn match scssMixin "^@mixin.*"
 syn match scssMixing "@include.*"
+
+syn match scssIdChar "#[[:alnum:]_-]\@=" nextgroup=scssId
+syn match scssId "[[:alnum:]_-]\+" contained
+syn match scssClassChar "\.[[:alnum:]_-]\@=" nextgroup=scssClass
+syn match scssClass "[[:alnum:]_-]\+" contained
 
 syn region scssComment	start="^\z(\s*\)//" end="^\%(\z1 \)\@!"
 
@@ -19,5 +26,9 @@ hi def link scssVariable  Identifier
 hi def link scssMixin	  PreProc
 hi def link scssMixing	  PreProc
 hi def link scssComment	  Comment
+hi def link scssIdChar	  Special
+hi def link scssClassChar Special
+hi def link scssId	  Identifier
+hi def link scssClass	  Type
 
 let b:current_syntax = "scss"
