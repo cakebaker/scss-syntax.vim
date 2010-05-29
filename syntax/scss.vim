@@ -11,6 +11,8 @@ runtime! syntax/css.vim
 
 syn case ignore
 
+syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssVariable,scssMixing
+
 syn match scssVariable "$[[:alnum:]_-]\+"
 syn match scssMixin "^@mixin.*"
 syn match scssMixing "@include.*"
