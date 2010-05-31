@@ -14,8 +14,8 @@ syn case ignore
 syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssVariable,scssMixing,scssAmpersand
 
 syn match scssVariable "$[[:alnum:]_-]\+"
-syn match scssMixin "^@mixin.*"
-syn match scssMixing "@include.*"
+syn match scssMixin "^@mixin .*{"
+syn match scssMixing "@include .*;"
 
 syn match scssIdChar "#[[:alnum:]_-]\@=" nextgroup=scssId
 syn match scssId "[[:alnum:]_-]\+" contained
