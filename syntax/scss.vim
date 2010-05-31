@@ -21,7 +21,7 @@ syn match scssIdChar "#[[:alnum:]_-]\@=" nextgroup=scssId
 syn match scssId "[[:alnum:]_-]\+" contained
 syn match scssClassChar "\.[[:alnum:]_-]\@=" nextgroup=scssClass
 syn match scssClass "[[:alnum:]_-]\+" contained
-syn match scssAmpersand "&"
+syn match scssAmpersand "&" nextgroup=cssPseudoClass
 
 syn region scssComment	start="^\z(\s*\)//" end="^\%(\z1 \)\@!"
 
