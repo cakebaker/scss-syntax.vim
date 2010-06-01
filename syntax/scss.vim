@@ -24,6 +24,11 @@ syn match scssClassChar "\.[[:alnum:]_-]\@=" nextgroup=scssClass
 syn match scssClass "[[:alnum:]_-]\+" contained
 syn match scssAmpersand "&" nextgroup=cssPseudoClass
 
+syn match scssIf "@if "
+syn match scssElse "@else "
+syn match scssWhile "@while "
+syn match scssFor "@for "
+
 syn region scssComment	start="^\z(\s*\)//" end="^\%(\z1 \)\@!"
 
 hi def link scssVariable  Identifier
@@ -36,5 +41,9 @@ hi def link scssClassChar Special
 hi def link scssId	  Identifier
 hi def link scssClass	  Type
 hi def link scssAmpersand Character
+hi def link scssIf	  Conditional
+hi def link scssElse	  Conditional
+hi def link scssWhile	  Repeat
+hi def link scssFor	  Repeat
 
 let b:current_syntax = "scss"
