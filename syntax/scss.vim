@@ -11,7 +11,9 @@ runtime! syntax/css.vim
 
 syn case ignore
 
-syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssTagName,scssDefinition,scssComment,scssId,scssIdChar,scssClass,scssClassChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,scssIf,scssElse,scssElseIf,scssWhile,scssFor,scssFrom,scssTo,scssThrough
+syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssTagName,scssDefinition,scssComment,scssId,scssIdChar,scssClass,scssClassChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,scssIf,scssElse,scssElseIf,scssWhile,scssFor,scssFrom,scssTo,scssThrough,scssInterpolation
+
+syn region scssInterpolation start="#{" end="}" contains=scssVariable
 
 syn match scssVariable "$[[:alnum:]_-]\+" nextgroup=scssVariableAssignment
 syn match scssVariableAssignment ":" nextgroup=scssVariableValue
@@ -63,5 +65,6 @@ hi def link scssFor	  Repeat
 hi def link scssFrom	  Repeat
 hi def link scssTo	  Repeat
 hi def link scssThrough	  Repeat
+hi def link scssInterpolation Delimiter
 
 let b:current_syntax = "scss"
