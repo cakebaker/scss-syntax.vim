@@ -65,7 +65,11 @@ body { color: black; }
 // since they use the single-line comment syntax.
 a { color: green; }
 
-$width: 5em;
+a {
+  color: green; // a comment after an assignment
+}
+
+$width: 5em; // another comment
 
 #main {
   width: $width;

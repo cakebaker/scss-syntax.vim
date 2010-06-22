@@ -17,7 +17,7 @@ syn region scssInterpolation start="#{" end="}" contains=scssVariable
 
 syn match scssVariable "$[[:alnum:]_-]\+" nextgroup=scssVariableAssignment
 syn match scssVariableAssignment ":" nextgroup=scssVariableValue
-syn match scssVariableValue ".*" contained
+syn match scssVariableValue ".*;" contained
 syn match scssMixin "^@mixin" nextgroup=scssMixinName
 syn match scssMixinName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssInclude "@include" nextgroup=scssMixinName
@@ -41,6 +41,7 @@ syn match scssFrom " from "
 syn match scssTo " to "
 syn match scssThrough " through "
 
+syn match scssComment "//.*$"
 syn region scssComment	start="^\z(\s*\)//" end="^\%(\z1 \)\@!"
 
 hi def link scssVariable  Identifier
