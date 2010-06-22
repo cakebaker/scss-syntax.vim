@@ -1,0 +1,339 @@
+#main p {
+  color: #00ff00;
+  width: 97%;
+
+  #hello {
+    background-color: blue;
+  }
+
+  .redbox {
+    background-color: #ff0000;
+    color: #000000;
+  }
+}
+
+#main {
+  width: 97%;
+
+  p, div {
+    font-size: 2em;
+    a { font-weight: bold; }
+  }
+
+  pre { font-size: 3em; }
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+  body.firefox & { font-weight: normal; }
+}
+
+#main {
+  color: black;
+  a {
+    font-weight: bold;
+    &:hover { color: red; }
+  }
+}
+
+.funky {
+  font: {
+    family: fantasy;
+    size: 30em;
+    weight: bold;
+  }
+}
+
+.funky {
+  font: 2px/3px {
+    family: fantasy;
+    size: 30em;
+    weight: bold;
+  }
+}
+
+/* This comment is
+ * several lines long.
+ * since it uses the CSS comment syntax,
+ * it will appear in the CSS output */
+body { color: black; }
+
+// These comments are only one line long each.
+// They won't appear in the CSS output,
+// since they use the single-line comment syntax.
+a { color: green; }
+
+$width: 5em;
+
+#main {
+  width: $width;
+}
+
+@mixin firefox-message($selector) {
+  body.firefox #{$selector}:before {
+    content: "Hi, Firefox users!"; } }
+
+@include firefox-message(".header");
+
+p {
+  width: 1in + 8pt;
+}
+
+p {
+  font: 10px/8px;
+  $width: 1000px;
+  width: $width/2;
+  height: (500px/2);
+  margin-left: 5px + 8px/2px;
+}
+
+p {
+  $font-size: 12px;
+  $line-height: 30px;
+  font: #{$font-size}/#{$line-height};
+}
+
+p {
+  color: #010203 + #040506;
+}
+
+p {
+  color: #010203 * 2;
+}
+
+p {
+  color: rgba(255, 0, 0, 0.75) + rgba(0, 255, 0, 0.75);
+}
+
+$translucent-red: rgba(255, 0, 0, 0.5);
+p {
+  color: opacify($translucent-red, 80%);
+  background-color: transparentize($translucent-red, 50%);
+}
+
+p {
+  cursor: e + -resize;
+}
+
+p:before {
+  content: "Foo " + Bar;
+  font-family: sans- + "serif"; }
+
+p {
+  margin: 3px + 4px auto;
+}
+
+p:before {
+  content: "I ate #{5 + 10} pies!"; }
+
+p {
+  width: 1em + (2em * 3);
+}
+
+p {
+  color: hsl(0, 100%, 50%);
+}
+
+$name: foo;
+$attr: border;
+p.#{$name} { #{$attr}-color: blue }
+
+p {
+  $font-size: 12px;
+  $line-height: 30px;
+  font: #{$font-size}/#{$line-height};
+}
+
+$content: "First content";
+$content: "Second content?" !default;
+$new_content: "First time reference" !default;
+
+#main {
+  content: $content;
+  new-content: $new_content;
+}
+
+@import "foo.scss";
+@import "foo";
+
+@import "foo.css";
+@import "colors";
+
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.error.intrusion {
+  background-image: url("/image/hacked.png");
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+
+.hoverlink {@extend a:hover}
+a:hover {text-decoration: underline}
+
+.hoverlink {@extend a:hover}
+.comment a.user:hover {font-weight: bold}
+
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.attention {
+  font-size: 3em;
+  background-color: #ff0;
+}
+.seriousError {
+  @extend .error;
+  @extend .attention;
+  border-width: 3px;
+}
+
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+.criticalError {
+  @extend .seriousError;
+  position: fixed;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+}
+
+#fake-links .link {@extend a}
+
+a {
+  color: blue;
+  &:hover {text-decoration: underline}
+}
+
+#admin .tabbar a {font-weight: bold}
+#demo .overview .fakelink {@extend a}
+
+#admin .tabbar a {font-weight: bold}
+#admin .overview .fakelink {@extend a}
+
+@debug 10em + 12em;
+
+@mixin adjust-location($x, $y) {
+  @if unitless($x) {
+    @warn "Assuming #{$x} to be in pixels";
+    $x: 1px * $x;
+  }
+  @if unitless($y) {
+    @warn "Assuming #{$y} to be in pixels";
+    $y: 1px * $y;
+  }
+  position: relative; left: $x; top: $y;
+}
+
+p {
+  @if 1 + 1 == 2 { border: 1px solid; }
+  @if 5 < 3 { border: 2px dotted; }
+}
+
+$type: monster;
+p {
+  @if $type == ocean {
+    color: blue;
+  } @else if $type == matador {
+    color: red;
+  } @else if $type == monster {
+    color: green;
+  } @else {
+    color: black;
+  }
+}
+
+@for $i from 1 through 3 {
+  .item-#{$1} { width: 2em * $i; }
+}
+
+$i: 6;
+@while $1 > 0 {
+  .item-#{$i} { width: 2em * $i; }
+  $i: $1 - 2;
+}
+
+@mixin large-text {
+  font: {
+    family: Arial;
+    size: 20px;
+    weight: bold;
+  }
+  color: #ff0000;
+}
+
+@mixin clearfix {
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  * html & { height: 1px }
+}
+
+.page-title {
+  @include large-text;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+@mixin silly-links {
+  a {
+    color: blue;
+    background-color: red;
+  }
+}
+
+@include silly-links;
+
+@mixin compound {
+  @include highlighted-background;
+  @include header-text;
+}
+
+@mixin highlighted-background { background-color: #fc0; }
+@mixin header-text { font-size: 20px; }
+
+@mixin sexy-border($color, $width) {
+  border: {
+    color: $color;
+    width: $width;
+    style: dashed;
+  }
+}
+
+p { @include sexy-border(blue, 1in); }
+
+@mixin sexy-border($color, $width: 1in) {
+  border: {
+    color: $color;
+    width: $width;
+    style: dashed;
+  }
+}
+p { @include sexy-border(blue); }
+h1 { @include sexy-border(blue, 2in); }
