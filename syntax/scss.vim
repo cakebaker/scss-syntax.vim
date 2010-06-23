@@ -41,7 +41,7 @@ syn match scssFrom " from "
 syn match scssTo " to "
 syn match scssThrough " through "
 
-syn match scssComment "//.*$"
+syn match scssComment "//.*$" contains=@Spell
 
 hi def link scssVariable  Identifier
 hi def link scssVariableValue Constant
