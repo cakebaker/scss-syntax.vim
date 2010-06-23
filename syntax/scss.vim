@@ -42,7 +42,6 @@ syn match scssTo " to "
 syn match scssThrough " through "
 
 syn match scssComment "//.*$"
-syn region scssComment	start="^\z(\s*\)//" end="^\%(\z1 \)\@!"
 
 hi def link scssVariable  Identifier
 hi def link scssVariableValue Constant
