@@ -33,7 +33,8 @@ syn match scssClassChar "\.[[:alnum:]_-]\@=" nextgroup=scssClass
 syn match scssClass "[[:alnum:]_-]\+" contained
 syn match scssAmpersand "&" nextgroup=cssPseudoClass
 
-syn match scssNestedSelector ".* {"me=e-1 contained contains=cssTagName,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssMixin,@scssControl,scssInterpolation
+syn match scssNestedSelector ".* {"me=e-1 contained contains=cssTagName,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssMixin,@scssControl,scssInterpolation,scssNestedProperty
+syn match scssNestedProperty "[[:alnum:]]\+:"me=e-1 contained
 
 syn match scssDebug "@debug"
 syn match scssWarn "@warn"
@@ -64,6 +65,7 @@ hi def link scssClassChar Special
 hi def link scssId	  Identifier
 hi def link scssClass	  Identifier
 hi def link scssAmpersand Character
+hi def link scssNestedProperty Type
 hi def link scssDebug	  Debug
 hi def link scssWarn	  Debug
 hi def link scssDefault   Special
