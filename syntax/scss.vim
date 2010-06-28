@@ -12,7 +12,7 @@ runtime! syntax/css.vim
 
 syn case ignore
 
-syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssDefinition,scssComment,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,@scssControl,scssInterpolation
+syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssDefinition,scssComment,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,@scssControl,scssInterpolation,scssNestedSelector
 
 syn region scssInterpolation start="#{" end="}" contains=scssVariable
 
@@ -32,6 +32,8 @@ syn match scssId "[[:alnum:]_-]\+" contained
 syn match scssClassChar "\.[[:alnum:]_-]\@=" nextgroup=scssClass
 syn match scssClass "[[:alnum:]_-]\+" contained
 syn match scssAmpersand "&" nextgroup=cssPseudoClass
+
+syn match scssNestedSelector ".* {"me=e-1 contained contains=cssTagName,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssMixin,@scssControl,scssInterpolation
 
 syn match scssDebug "@debug"
 syn match scssWarn "@warn"
