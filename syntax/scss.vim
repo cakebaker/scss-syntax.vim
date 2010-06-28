@@ -18,7 +18,7 @@ syn region scssInterpolation start="#{" end="}" contains=scssVariable
 
 syn match scssVariable "$[[:alnum:]_-]\+" nextgroup=scssVariableAssignment
 syn match scssVariableAssignment ":" contained nextgroup=scssVariableValue
-syn match scssVariableValue ".*;"me=e-1 contained "me=e-1 means that the last char of the pattern is not highlighted
+syn match scssVariableValue ".*;"me=e-1 contained contains=scssDefault "me=e-1 means that the last char of the pattern is not highlighted
 syn match scssMixin "^@mixin" nextgroup=scssMixinName
 syn match scssMixinName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssInclude "@include" nextgroup=scssMixinName
@@ -32,6 +32,7 @@ syn match scssAmpersand "&" nextgroup=cssPseudoClass
 
 syn match scssDebug "@debug"
 syn match scssWarn "@warn"
+syn match scssDefault "!default" contained
 
 syn match scssIf "@if"
 syn match scssElse "@else"
@@ -59,6 +60,7 @@ hi def link scssClass	  Type
 hi def link scssAmpersand Character
 hi def link scssDebug	  Debug
 hi def link scssWarn	  Debug
+hi def link scssDefault   Special
 hi def link scssIf	  Conditional
 hi def link scssElse	  Conditional
 hi def link scssElseIf	  Conditional
