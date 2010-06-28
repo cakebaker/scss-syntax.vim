@@ -1,7 +1,8 @@
 " Vim syntax file
 " Language: SCSS (Sassy CSS)
 " Author: Daniel Hofstetter (daniel.hofstetter@42dh.com)
-" Inspired by Tim Pope's sass syntax file
+" Inspired by the syntax files for sass and css. Thanks to the authors of
+" those files!
 
 if exists("b:current_syntax")
   finish
