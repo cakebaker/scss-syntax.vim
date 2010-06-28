@@ -24,7 +24,10 @@ syn match scssMixinName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssInclude "@include" nextgroup=scssMixinName
 syn match scssExtend "@extend"
 
-syn match scssIdChar "#[[:alnum:]_-]\@=" nextgroup=scssId
+syn match scssColor "#[0-9A-Fa-f]\{3\}\>" contained
+syn match scssColor "#[0-9A-Fa-f]\{6\}\>" contained
+
+syn match scssIdChar "#[[:alnum:]_-]\@=" nextgroup=scssId contains=scssColor
 syn match scssId "[[:alnum:]_-]\+" contained
 syn match scssClassChar "\.[[:alnum:]_-]\@=" nextgroup=scssClass
 syn match scssClass "[[:alnum:]_-]\+" contained
@@ -53,6 +56,7 @@ hi def link scssMixinName Function
 hi def link scssInclude	  PreProc
 hi def link scssExtend	  PreProc
 hi def link scssComment	  Comment
+hi def link scssColor     Constant
 hi def link scssIdChar	  Special
 hi def link scssClassChar Special
 hi def link scssId	  Identifier
