@@ -22,7 +22,7 @@ syn match scssVariableValue ".*;"me=e-1 contained contains=scssDefault "me=e-1 m
 syn match scssMixin "^@mixin" nextgroup=scssMixinName
 syn match scssMixinName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssInclude "@include" nextgroup=scssMixinName
-syn match scssExtend "@extend"
+syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar
 
 syn match scssColor "#[0-9A-Fa-f]\{3\}\>" contained
 syn match scssColor "#[0-9A-Fa-f]\{6\}\>" contained
