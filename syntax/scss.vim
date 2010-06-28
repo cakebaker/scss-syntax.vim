@@ -56,7 +56,7 @@ hi def link scssComment	  Comment
 hi def link scssIdChar	  Special
 hi def link scssClassChar Special
 hi def link scssId	  Identifier
-hi def link scssClass	  Type
+hi def link scssClass	  Identifier
 hi def link scssAmpersand Character
 hi def link scssDebug	  Debug
 hi def link scssWarn	  Debug
