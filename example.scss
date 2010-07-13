@@ -81,6 +81,10 @@ a {
   color: green; // a comment after an assignment
 }
 
+.foo {
+  color: green; // issue #3: a comment ending with {}
+}
+
 $width: 5em; // another comment
 
 #main {
