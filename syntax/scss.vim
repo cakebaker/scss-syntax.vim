@@ -18,7 +18,7 @@ syn region scssInterpolation start="#{" end="}" contains=scssVariable
 
 syn match scssVariable "$[[:alnum:]_-]\+" nextgroup=scssVariableAssignment
 syn match scssVariableAssignment ":" contained nextgroup=scssVariableValue
-syn match scssVariableValue ".*;"me=e-1 contained contains=scssDefault "me=e-1 means that the last char of the pattern is not highlighted
+syn match scssVariableValue ".*;"me=e-1 contained contains=scssVariable,scssOperator,scssDefault "me=e-1 means that the last char of the pattern is not highlighted
 syn match scssMixin "^@mixin" nextgroup=scssMixinName
 syn match scssMixinName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssInclude "@include" nextgroup=scssMixinName
@@ -32,6 +32,11 @@ syn match scssId "[[:alnum:]_-]\+" contained
 syn match scssClassChar "\.[[:alnum:]_-]\@=" nextgroup=scssClass
 syn match scssClass "[[:alnum:]_-]\+" contained
 syn match scssAmpersand "&" nextgroup=cssPseudoClass
+
+syn match scssOperator "+" contained
+syn match scssOperator "-" contained
+syn match scssOperator "/" contained
+syn match scssOperator "*" contained
 
 syn match scssNestedSelector "[^/]* {"me=e-1 contained contains=cssTagName,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssMixin,@scssControl,scssInterpolation,scssNestedProperty
 syn match scssNestedProperty "[[:alnum:]]\+:"me=e-1 contained
