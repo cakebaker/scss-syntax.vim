@@ -359,3 +359,9 @@ p { @include sexy-border(blue, 1in); }
 }
 p { @include sexy-border(blue); }
 h1 { @include sexy-border(blue, 2in); }
+
+// Attribute selectors should get highlighted for parent references.
+input {
+    &[type="text"] { } // <-- This should look the same as...
+}
+input[type="text"] { } // <-- this.
