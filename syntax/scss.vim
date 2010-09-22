@@ -38,7 +38,7 @@ syn match scssOperator "-" contained
 syn match scssOperator "/" contained
 syn match scssOperator "*" contained
 
-syn match scssNestedSelector "[^/]* {"me=e-1 contained contains=cssTagName,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssMixin,@scssControl,scssInterpolation,scssNestedProperty
+syn match scssNestedSelector "[^/]* {"me=e-1 contained contains=cssTagName,cssAttributeSelector,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssMixin,@scssControl,scssInterpolation,scssNestedProperty
 syn match scssNestedProperty "[[:alnum:]]\+:"me=e-1 contained
 
 syn match scssDebug "@debug"
