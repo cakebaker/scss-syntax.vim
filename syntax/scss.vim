@@ -12,7 +12,7 @@ runtime! syntax/css.vim
 
 syn case ignore
 
-syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssDefinition,scssComment,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,@scssControl,scssInterpolation,scssNestedSelector
+syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssDefinition,scssComment,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,@scssControl,scssInterpolation,scssNestedSelector,scssReturn
 
 syn region scssInterpolation start="#{" end="}" contains=scssVariable
 
@@ -21,6 +21,9 @@ syn match scssVariableAssignment ":" contained nextgroup=scssVariableValue
 syn match scssVariableValue ".*;"me=e-1 contained contains=scssVariable,scssOperator,scssDefault "me=e-1 means that the last char of the pattern is not highlighted
 syn match scssMixin "^@mixin" nextgroup=scssMixinName
 syn match scssMixinName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
+syn match scssFunction "^@function" nextgroup=scssFunctionName
+syn match scssFunctionName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
+syn match scssReturn "@return" contained
 syn match scssInclude "@include" nextgroup=scssMixinName
 syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar
 
@@ -38,7 +41,7 @@ syn match scssOperator "-" contained
 syn match scssOperator "/" contained
 syn match scssOperator "*" contained
 
-syn match scssNestedSelector "[^/]* {"me=e-1 contained contains=cssTagName,cssAttributeSelector,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssMixin,@scssControl,scssInterpolation,scssNestedProperty
+syn match scssNestedSelector "[^/]* {"me=e-1 contained contains=cssTagName,cssAttributeSelector,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssMixin,scssFunction,@scssControl,scssInterpolation,scssNestedProperty
 syn match scssNestedProperty "[[:alnum:]]\+:"me=e-1 contained
 
 syn match scssDebug "@debug"
@@ -63,6 +66,9 @@ hi def link scssVariable  Identifier
 hi def link scssVariableValue Constant
 hi def link scssMixin     PreProc
 hi def link scssMixinName Function
+hi def link scssFunction  PreProc
+hi def link scssFunctionName Function
+hi def link scssReturn    Statement
 hi def link scssInclude   PreProc
 hi def link scssExtend    PreProc
 hi def link scssComment   Comment

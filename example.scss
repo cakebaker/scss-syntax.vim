@@ -421,6 +421,17 @@ h1 { @include sexy-border(blue, 2in); }
 p { @include sexy-border($color: blue); }
 h1 { @include sexy-border($color: blue, $width: 2in); }
 
+// Function Directives
+
+$grid-width: 40px;
+$gutter-width: 10px;
+
+@function grid-width($n) {
+  @return $n * $grid-width + ($n - 1) * $gutter-width;
+}
+
+#sidebar { width: grid-width(5); }
+
 
 
 
