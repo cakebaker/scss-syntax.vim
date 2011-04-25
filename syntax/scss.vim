@@ -53,35 +53,39 @@ syn match scssFor "@for" nextgroup=scssVariable
 syn match scssFrom " from "
 syn match scssTo " to "
 syn match scssThrough " through "
-syn cluster scssControl contains=scssIf,scssElse,scssElseIf,scssWhile,scssFor,scssFrom,scssTo,scssThrough
+syn match scssEach "@each" nextgroup=scssVariable
+syn match scssIn " in "
+syn cluster scssControl contains=scssIf,scssElse,scssElseIf,scssWhile,scssFor,scssFrom,scssTo,scssThrough,scssEach,scssIn
 
 syn match scssComment "//.*$" contains=@Spell
 
 hi def link scssVariable  Identifier
 hi def link scssVariableValue Constant
-hi def link scssMixin	  PreProc
+hi def link scssMixin     PreProc
 hi def link scssMixinName Function
-hi def link scssInclude	  PreProc
-hi def link scssExtend	  PreProc
-hi def link scssComment	  Comment
+hi def link scssInclude   PreProc
+hi def link scssExtend    PreProc
+hi def link scssComment   Comment
 hi def link scssColor     Constant
-hi def link scssIdChar	  Special
+hi def link scssIdChar    Special
 hi def link scssClassChar Special
-hi def link scssId	  Identifier
-hi def link scssClass	  Identifier
+hi def link scssId        Identifier
+hi def link scssClass     Identifier
 hi def link scssAmpersand Character
 hi def link scssNestedProperty Type
-hi def link scssDebug	  Debug
-hi def link scssWarn	  Debug
+hi def link scssDebug     Debug
+hi def link scssWarn      Debug
 hi def link scssDefault   Special
-hi def link scssIf	  Conditional
-hi def link scssElse	  Conditional
-hi def link scssElseIf	  Conditional
-hi def link scssWhile	  Repeat
-hi def link scssFor	  Repeat
-hi def link scssFrom	  Repeat
-hi def link scssTo	  Repeat
-hi def link scssThrough	  Repeat
+hi def link scssIf        Conditional
+hi def link scssElse      Conditional
+hi def link scssElseIf    Conditional
+hi def link scssWhile     Repeat
+hi def link scssFor       Repeat
+hi def link scssFrom      Repeat
+hi def link scssTo        Repeat
+hi def link scssThrough   Repeat
+hi def link scssEach      Repeat
+hi def link scssIn        Repeat
 hi def link scssInterpolation Delimiter
 
 let b:current_syntax = "scss"

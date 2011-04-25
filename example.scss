@@ -290,6 +290,12 @@ p {
   .item-#{$1} { width: 2em * $i; }
 }
 
+@each $animal in puma, sea-slug, egret, salamander {
+  .#{$animal}-icon {
+    background-image: url('/images/#{$animal}.png');
+  }
+}
+
 $i: 6;
 @while $1 > 0 {
   .item-#{$i} { width: 2em * $i; }
