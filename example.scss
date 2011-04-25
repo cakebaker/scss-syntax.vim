@@ -166,6 +166,12 @@ p {
   color: hsl(0, 100%, 50%);
 }
 
+// Keyword Arguments
+
+p {
+  color: hsl($hue: 0, $saturation: 100%, $lightness: 50%);
+}
+
 // Interpolation: #{}
 
 $name: foo;
@@ -202,6 +208,33 @@ $new_content: "First time reference" !default;
 // Partials
 
 @import "colors";
+
+// Nested @import
+
+.example {
+  color: red;
+}
+
+#main {
+  @import "example";
+}
+
+// @media
+
+.sidebar {
+  width: 300px;
+  @media screen and (orientation: landscape) {
+    width: 500px;
+  }
+}
+
+@media screen {
+  .sidebar {
+    @media (orientation: landscape) {
+      width: 500px;
+    }
+  }
+}
 
 // @extend
 
