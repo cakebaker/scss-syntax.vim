@@ -12,7 +12,7 @@ runtime! syntax/css.vim
 
 syn case ignore
 
-syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssDefinition,scssComment,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,@scssControl,scssInterpolation,scssNestedSelector,scssReturn
+syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssDefinition,scssComment,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssImport,scssDebug,scssWarn,@scssControl,scssInterpolation,scssNestedSelector,scssReturn
 
 syn region scssInterpolation start="#{" end="}" contains=scssVariable
 
@@ -26,6 +26,7 @@ syn match scssFunctionName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssReturn "@return" contained
 syn match scssInclude "@include" nextgroup=scssMixinName
 syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar
+syn match scssImport "@import .*[;}]"me=e-1 contains=cssStringQQ,cssStringQ,cssUrl,cssMediaType
 
 syn match scssColor "#[0-9A-Fa-f]\{3\}\>" contained
 syn match scssColor "#[0-9A-Fa-f]\{6\}\>" contained
@@ -93,5 +94,6 @@ hi def link scssThrough   Repeat
 hi def link scssEach      Repeat
 hi def link scssIn        Repeat
 hi def link scssInterpolation Delimiter
+hi def link scssImport    PreProc
 
 let b:current_syntax = "scss"
