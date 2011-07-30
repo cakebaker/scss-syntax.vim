@@ -201,7 +201,9 @@ $new_content: "First time reference" !default;
 @import "foo";
 
 @import "foo.css";
+@import 'foo.css';
 @import "foo" screen;
+@import "http://foo.com/bar";
 @import "http://foo.com/bar";
 @import url(foo);
 
@@ -217,6 +219,7 @@ $new_content: "First time reference" !default;
 
 #main {
   @import "example";
+  @import "icons/*.png";
 }
 
 // @media
