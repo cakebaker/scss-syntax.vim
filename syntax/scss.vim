@@ -95,3 +95,14 @@ hi def link scssIn        Repeat
 hi def link scssInterpolation Delimiter
 
 let b:current_syntax = "scss"
+
+au! BufWriteCmd *.scss call SCSStocss()
+
+if !exists('*SCSStocss')
+    function! SCSStocss()
+        let src = tempname()
+        let dst = substitute( bufname('%'),'.scss','.css','g' )
+        execute "w ! sass --scss -s " . dst
+        w
+    endfunction
+endif
