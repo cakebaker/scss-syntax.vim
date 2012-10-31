@@ -10,7 +10,7 @@ if !exists("main_syntax")
   elseif exists("b:current_syntax")
     finish
   endif
-  let main_syntax = 'html'
+  let main_syntax = 'scss'
 endif
 
 runtime! syntax/css.vim
@@ -105,3 +105,6 @@ hi def link scssImport    Include
 hi def link scssImportStr Include
 
 let b:current_syntax = "scss"
+if main_syntax == 'scss'
+  unlet main_syntax
+endif
