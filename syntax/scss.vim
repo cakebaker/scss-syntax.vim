@@ -4,8 +4,13 @@
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
-if exists("b:current_syntax")
-  finish
+if !exists("main_syntax")
+  if version < 600
+    syntax clear
+  elseif exists("b:current_syntax")
+    finish
+  endif
+  let main_syntax = 'html'
 endif
 
 runtime! syntax/css.vim
