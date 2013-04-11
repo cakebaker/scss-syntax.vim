@@ -32,6 +32,7 @@ syn match scssFunctionName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssReturn "@return" contained
 syn match scssInclude "@include" nextgroup=scssMixinName
 syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar
+syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedIn=scssComment,cssComment
 
 syn match scssColor "#[0-9A-Fa-f]\{3\}\>" contained
 syn match scssColor "#[0-9A-Fa-f]\{6\}\>" contained
@@ -103,6 +104,7 @@ hi def link scssIn        Repeat
 hi def link scssInterpolation Delimiter
 hi def link scssImport    Include
 hi def link scssImportStr Include
+hi def link scssTodo      Todo
 
 let b:current_syntax = "scss"
 if main_syntax == 'scss'
