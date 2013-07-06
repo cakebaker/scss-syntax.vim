@@ -408,6 +408,18 @@ $i: 6;
   @include large-text;
   padding: 4px;
   margin-top: 10px;
+
+  @include block-mixin($argument) {
+    color: red;
+  }
+
+  .child {
+    background-color: blue;
+  }
+}
+
+@include block-mixin() {
+  @include mixin($argument);
 }
 
 @mixin silly-links {
