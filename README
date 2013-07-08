@@ -1,8 +1,0 @@
-Installation
-============
-
-Linux: Copy the files to ~/.vim/syntax and ~/.vim/ftdetect respectively, and restart Vim.
-
-OSX: Copy the syntax file to ~/.vim/syntax and add the following snippet to your vimrc file:
-
-     au BufRead,BufNewFile *.scss set filetype=scss
