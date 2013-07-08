@@ -6,7 +6,7 @@ I recommend to use a plugin manager like [Vundle](https://github.com/gmarik/vund
 
 ### Vundle
 
-If you're using Vundle, open your `~/.vimrc` file and add the following line:
+Open your `~/.vimrc` file and add the following line:
 
 ```
 Bundle 'cakebaker/scss-syntax.vim'
