@@ -468,6 +468,7 @@ $gutter-width: 10px;
 // TODO: todo should be highlighted, ticket #21
 /* TODO: same here */
 
+@import url(http://fonts.googleapis.com/css?family=Vollkorn);  // the // in the url shouldn't be highlighted as comment, ticket #24
 
 // Styles which were not highlighted correctly in the past
 

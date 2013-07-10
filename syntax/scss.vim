@@ -69,7 +69,7 @@ syn cluster scssControl contains=scssIf,scssElse,scssElseIf,scssWhile,scssFor,sc
 
 syn match scssComment "//.*$" contains=@Spell
 syn region scssImportStr start="\"" end="\""
-syn region scssImport start="@import" end=";" contains=scssImportStr,scssComment,cssComment,cssUnicodeEscape,cssMediaType
+syn region scssImport start="@import" end=";" contains=scssImportStr,scssComment,cssComment,cssUnicodeEscape,cssMediaType,cssUrl
 
 hi def link scssVariable  Identifier
 hi def link scssVariableValue Constant
