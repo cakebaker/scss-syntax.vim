@@ -93,7 +93,9 @@ $width: 5em; // another comment
 
 @mixin firefox-message($selector) {
   body.firefox #{$selector}:before {
-    content: "Hi, Firefox users!"; } }
+    content: "Hi, Firefox users!";
+  }
+}
 
 @include firefox-message(".header");
 
@@ -145,14 +147,16 @@ p {
 
 p:before {
   content: "Foo " + Bar;
-  font-family: sans- + "serif"; }
+  font-family: sans- + "serif";
+}
 
 p {
   margin: 3px + 4px auto;
 }
 
 p:before {
-  content: "I ate #{5 + 10} pies!"; }
+  content: "I ate #{5 + 10} pies!";
+}
 
 // Parentheses
 
@@ -176,7 +180,9 @@ p {
 
 $name: foo;
 $attr: border;
-p.#{$name} { #{$attr}-color: blue }
+p.#{$name} {
+  #{$attr}-color: blue;
+}
 
 p {
   $font-size: 12px;
@@ -261,11 +267,19 @@ $new_content: "First time reference" !default;
 
 // Extending Complex Selectors
 
-.hoverlink {@extend a:hover}
-a:hover {text-decoration: underline}
+.hoverlink {
+  @extend a:hover;
+}
+a:hover {
+  text-decoration: underline;
+}
 
-.hoverlink {@extend a:hover}
-.comment a.user:hover {font-weight: bold}
+.hoverlink {
+  @extend a:hover;
+}
+.comment a.user:hover {
+  font-weight: bold;
+}
 
 // Multiple Extends
 
@@ -304,20 +318,32 @@ a:hover {text-decoration: underline}
 
 // Selector Sequences
 
-#fake-links .link {@extend a}
+#fake-links .link {
+  @extend a;
+}
 
 a {
   color: blue;
-  &:hover {text-decoration: underline}
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 // Merging Selector Sequences
 
-#admin .tabbar a {font-weight: bold}
-#demo .overview .fakelink {@extend a}
+#admin .tabbar a {
+  font-weight: bold;
+}
+#demo .overview .fakelink {
+  @extend a;
+}
 
-#admin .tabbar a {font-weight: bold}
-#admin .overview .fakelink {@extend a}
+#admin .tabbar a {
+  font-weight: bold;
+}
+#admin .overview .fakelink {
+  @extend a;
+}
 
 // @debug
 
@@ -340,8 +366,8 @@ a {
 // @if
 
 p {
-  @if 1 + 1 == 2 { border: 1px solid; }
-  @if 5 < 3 { border: 2px dotted; }
+  @if 1 + 1 == 2 { border: 1px solid;  }
+  @if 5 < 3      { border: 2px dotted; }
 }
 
 $type: monster;
