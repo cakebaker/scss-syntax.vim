@@ -18,9 +18,21 @@ runtime! syntax/css/*.vim
 
 syn case ignore
 
-syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssDefinition,scssComment,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,@scssControl,scssInterpolation,scssNestedSelector,scssReturn
+syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssDefinition,scssComment,scssIdChar,scssClassChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,@scssControl,scssInterpolation,scssNestedSelector,scssReturn,scssFn
 
 syn region scssInterpolation start="#{" end="}" contains=scssVariable
+
+" functions from http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html
+syn region scssFn contained matchgroup=scssFnName start="\<\(rgb\|rgba\|red\|green\|blue\|mix\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFnName start="\<\(hsl\|hsla\|hue\|saturation\|lightness\|adjust-hue\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFnName start="\<\(lighten\|darken\|saturate\|desaturate\|grayscale\|complement\|invert\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFnName start="\<\(alpha\|opacity\|opacify\|transparentize\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFnName start="\<\(adjust-color\|scale-color\|change-color\|ie-hex-str\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFnName start="\<\(unquote\|quote\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFnName start="\<\(percentage\|round\|ceil\|floor\|abs\|min\|max\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFnName start="\<\(length\|nth\|join\|append\|zip\|index\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFnName start="\<\(type-of\|unit\|unitless\|comparable\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFnName start="\<\(if\)\s*(" end=")" oneline keepend
 
 syn match scssVariable "$[[:alnum:]_-]\+" nextgroup=scssVariableAssignment
 syn match scssVariableAssignment ":" contained nextgroup=scssVariableValue
@@ -77,6 +89,8 @@ hi def link scssMixin     PreProc
 hi def link scssMixinName Function
 hi def link scssFunction  PreProc
 hi def link scssFunctionName Function
+hi def link scssFn        Constant
+hi def link scssFnName    Function
 hi def link scssReturn    Statement
 hi def link scssInclude   PreProc
 hi def link scssExtend    PreProc
