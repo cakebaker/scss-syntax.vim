@@ -345,6 +345,18 @@ a {
   @extend a;
 }
 
+// @extend-Only Selectors
+
+#context a%extreme {
+  color: blue;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.notice {
+  @extend %extreme;
+}
+
 // @debug
 
 @debug 10em + 12em;
