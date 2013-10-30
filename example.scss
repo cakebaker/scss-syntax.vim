@@ -518,6 +518,12 @@ input[type="text"] { } // <-- this.
 
 $a: $b + $c; // issue #4: variables should be displayed with the same color
 
+@include text-shadow; // issue #23, @include content block
+
+@include breakpoint( $bp-default {
+  display: inline-block;
+}
+
 div {
   height: 10px;
 }
