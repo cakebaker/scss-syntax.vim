@@ -5,9 +5,7 @@
 " those files!
 
 if !exists("main_syntax")
-  if version < 600
-    syntax clear
-  elseif exists("b:current_syntax")
+  if exists("b:current_syntax")
     finish
   endif
   let main_syntax = 'scss'
