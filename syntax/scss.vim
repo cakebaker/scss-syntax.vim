@@ -18,10 +18,7 @@ syn case ignore
 
 syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssDefinition,scssComment,scssIdChar,scssClassChar,scssPlaceholderChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,@scssControl,scssInterpolation,scssNestedSelector,scssReturn,scssFn
 
-syn region cssStringQQ start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=cssUnicodeEscape,cssSpecialCharQQ,scssInterpolation
-syn region cssStringQ start=+'+ skip=+\\\\\|\\'+ end=+'+ contains=cssUnicodeEscape,cssSpecialCharQ,scssInterpolation
-
-syn region scssInterpolation start="#{" end="}" contains=scssVariable
+syn region scssInterpolation start="#{" end="}" contains=scssVariable containedin=cssStringQ,cssStringQQ,cssUrl
 
 " functions from http://sass-lang.com/documentation/Sass/Script/Functions.html
 syn region scssFn contained matchgroup=scssFnName start="\<\(rgb\|rgba\|red\|green\|blue\|mix\)\s*(" end=")" oneline keepend
@@ -45,7 +42,7 @@ syn match scssFunctionName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssReturn "@return" contained
 syn match scssInclude "@include" nextgroup=scssMixinName
 syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar,scssPlaceholderChar
-syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedIn=scssComment,cssComment
+syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=scssComment,cssComment
 
 syn match scssColor "#[0-9A-Fa-f]\{3\}\>" contained
 syn match scssColor "#[0-9A-Fa-f]\{6\}\>" contained
