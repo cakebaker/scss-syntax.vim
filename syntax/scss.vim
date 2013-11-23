@@ -79,8 +79,7 @@ syn match scssIn " in "
 syn cluster scssControl contains=scssIf,scssElse,scssElseIf,scssWhile,scssFor,scssFrom,scssTo,scssThrough,scssEach,scssIn
 
 syn match scssComment "//.*$" contains=@Spell
-syn region scssImportStr start="\"" end="\""
-syn region scssImport start="@import" end=";" contains=scssImportStr,scssComment,cssComment,cssUnicodeEscape,cssMediaType,cssUrl
+syn region scssImport start="@import" end=/\ze;/ contains=cssStringQ,cssStringQQ,cssComment,cssUnicodeEscape,cssMediaType,cssUrl,scssComment
 
 hi def link scssVariable  Identifier
 hi def link scssVariableValue Constant
@@ -116,7 +115,6 @@ hi def link scssEach      Repeat
 hi def link scssIn        Repeat
 hi def link scssInterpolation Delimiter
 hi def link scssImport    Include
-hi def link scssImportStr Include
 hi def link scssTodo      Todo
 
 let b:current_syntax = "scss"
