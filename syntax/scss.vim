@@ -16,9 +16,15 @@ runtime! syntax/css/*.vim
 
 syn case ignore
 
-syn region scssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssUrl,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,scssDefinition,scssComment,scssIdChar,scssClassChar,scssPlaceholderChar,scssAmpersand,scssVariable,scssInclude,scssExtend,scssDebug,scssWarn,@scssControl,scssInterpolation,scssNestedSelector,scssReturn,scssFn
+syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=TOP
 
-syn region scssInterpolation start="#{" end="}" contains=scssVariable containedin=cssStringQ,cssStringQQ,cssUrl
+syn match scssProperty "\%([[:alnum:]-]\)\+\s*:" contains=css.*Prop containedin=cssMediaBlock,scssDefinition nextgroup=scssAttribute
+syn match scssAttribute ":.*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssStringQ,cssStringQQ,cssUrl,scssFn,scssInterpolation,scssVariable containedin=scssProperty
+
+" XXX redefining font keyword to avoid it being displayed as deprecated
+syn keyword cssFontProp font
+
+syn region scssInterpolation start="#{" end="}" contains=scssVariable containedin=cssStringQ,cssStringQQ,cssUrl,scssFn
 
 " functions from http://sass-lang.com/documentation/Sass/Script/Functions.html
 syn region scssFn contained matchgroup=scssFnName start="\<\(rgb\|rgba\|red\|green\|blue\|mix\)\s*(" end=")" oneline keepend
@@ -31,15 +37,17 @@ syn region scssFn contained matchgroup=scssFnName start="\<\(percentage\|round\|
 syn region scssFn contained matchgroup=scssFnName start="\<\(length\|nth\|join\|append\|zip\|index\)\s*(" end=")" oneline keepend
 syn region scssFn contained matchgroup=scssFnName start="\<\(type-of\|unit\|unitless\|comparable\)\s*(" end=")" oneline keepend
 syn region scssFn contained matchgroup=scssFnName start="\<\(if\)\s*(" end=")" oneline keepend
+" custom functions
+syn region scssFn contained matchgroup=scssFnName start="\<\([[:alnum:]-]\)\+\s*(" end=")" oneline keepend
 
-syn match scssVariable "$[[:alnum:]_-]\+" nextgroup=scssVariableAssignment
+syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFn nextgroup=scssVariableAssignment
 syn match scssVariableAssignment ":" contained nextgroup=scssVariableValue
 syn match scssVariableValue ".*;"me=e-1 contained contains=scssFn,scssVariable,scssOperator,scssDefault "me=e-1 means that the last char of the pattern is not highlighted
 syn match scssMixin "^@mixin" nextgroup=scssMixinName
 syn match scssMixinName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssFunction "^@function" nextgroup=scssFunctionName
 syn match scssFunctionName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
-syn match scssReturn "@return" contained
+syn match scssReturn "@return" containedin=scssFunction
 syn match scssInclude "@include" nextgroup=scssMixinName
 syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar,scssPlaceholderChar
 syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=scssComment,cssComment
