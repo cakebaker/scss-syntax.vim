@@ -50,7 +50,7 @@ syn match scssFunctionName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssReturn "@return" containedin=scssFunction
 syn match scssInclude "@include" nextgroup=scssMixinName
 syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar,scssPlaceholderChar
-syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=scssComment,cssComment
+syn region scssImport start="@import" end=/\ze;/ contains=cssStringQ,cssStringQQ,cssComment,cssUnicodeEscape,cssMediaType,cssUrl,scssComment
 
 syn match scssColor "#[0-9A-Fa-f]\{3\}\>" contained
 syn match scssColor "#[0-9A-Fa-f]\{6\}\>" contained
@@ -87,7 +87,7 @@ syn match scssIn " in "
 syn cluster scssControl contains=scssIf,scssElse,scssElseIf,scssWhile,scssFor,scssFrom,scssTo,scssThrough,scssEach,scssIn
 
 syn match scssComment "//.*$" contains=@Spell
-syn region scssImport start="@import" end=/\ze;/ contains=cssStringQ,cssStringQQ,cssComment,cssUnicodeEscape,cssMediaType,cssUrl,scssComment
+syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=cssComment,scssComment
 
 hi def link scssVariable  Identifier
 hi def link scssVariableValue Constant
