@@ -524,6 +524,11 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   display: inline-block;
 }
 
+.app-header { // issue #31, functions with hyphens not properly highlighted
+  @include linear-gradient(gray-with-lightness(0.94), #FFF 90%);
+  border-bottom: 1px solid gray-with-lightness(0.95);
+}
+
 div {
   height: 10px;
 }

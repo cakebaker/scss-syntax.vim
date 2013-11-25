@@ -45,7 +45,7 @@ syn match scssVariableAssignment "($[[:alnum:]_-]\+\s*)\@<=:" nextgroup=scssAttr
 
 syn match scssMixin "^@mixin" nextgroup=scssMixinName
 syn match scssMixinName " [[:alnum:]_-]\+[^{;]*" contained contains=scssMixinParams nextgroup=scssDefinition
-syn region scssMixinParams contained contains=cssColor,cssValue.*,cssStringQ,cssStringQQ,scssVariable start="(" end=")" oneline extend
+syn region scssMixinParams contained contains=cssColor,cssValue.*,cssStringQ,cssStringQQ,scssVariable,scssFn start="(" end=")" oneline extend
 syn match scssInclude "@include\s\+[[:alnum:]_-]\+" contains=scssMixinName nextgroup=scssMixinParams
 
 syn match scssFunction "^@function" nextgroup=scssFunctionName
