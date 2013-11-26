@@ -16,6 +16,10 @@ runtime! syntax/css/*.vim
 
 syn case ignore
 
+" XXX fix for #20, can be removed once the patch is in vim's css.vim
+syn match cssSpecialCharQQ +\\\\\|\\"+ contained
+syn match cssSpecialCharQ +\\\\\|\\'+ contained
+
 syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=TOP
 
 syn match scssProperty "\%([[:alnum:]-]\)\+\s*:" contains=css.*Prop containedin=cssMediaBlock,scssDefinition nextgroup=scssAttribute

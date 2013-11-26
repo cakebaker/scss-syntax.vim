@@ -529,6 +529,10 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   border-bottom: 1px solid gray-with-lightness(0.95);
 }
 
+.breadcrumb:before { // issue #20, string escaping rendering incorrectly for "\\"
+  content: "\\";
+}
+
 div {
   height: 10px;
 }
