@@ -135,8 +135,8 @@ p {
 
 $translucent-red: rgba(255, 0, 0, 0.5);
 p {
-  color: opacify($translucent-red, 80%);
-  background-color: transparentize($translucent-red, 50%);
+  color: opacify($translucent-red, 0.3);
+  background-color: transparentize($translucent-red, 0.25);
 }
 
 // String Operations
@@ -156,6 +156,11 @@ p {
 
 p:before {
   content: "I ate #{5 + 10} pies!";
+}
+
+$value: null;
+p:before {
+  content: "I ate #{$value} pies!";
 }
 
 // Parentheses
@@ -201,6 +206,13 @@ $new_content: "First time reference" !default;
   new-content: $new_content;
 }
 
+$content: null;
+$content: "Non-null content" !default;
+
+#main {
+  content: $content;
+}
+
 // @import
 
 @import "foo.scss";
@@ -210,6 +222,11 @@ $new_content: "First time reference" !default;
 @import "foo" screen;
 @import "http://foo.com/bar";
 @import url(foo);
+
+@import "rounded-corners", "text-shadow";
+
+$family: unquote("Droid+Sans");
+@import url("http://fonts.googleapis.com/css?family=#{$family}");
 
 // Partials
 
@@ -239,6 +256,16 @@ $new_content: "First time reference" !default;
     @media (orientation: landscape) {
       width: 500px;
     }
+  }
+}
+
+$media: screen;
+$feature: -webkit-min-device-pixel-ratio;
+$value: 1.5;
+
+@media #{$media} and ($feature: $value) {
+  .sidebar {
+    width: 500px;
   }
 }
 
@@ -357,6 +384,25 @@ a {
   @extend %extreme;
 }
 
+// The !optional Flag
+
+a.important {
+  @extend .notice !optional;
+}
+
+// @extend in Directives
+
+@media print {
+  .error {
+    border: 1px #f00;
+    background-color: #fdd;
+  }
+  .seriousError {
+    @extend .error;
+    border-width: 3px;
+  }
+}
+
 // @debug
 
 @debug 10em + 12em;
@@ -380,6 +426,7 @@ a {
 p {
   @if 1 + 1 == 2 { border: 1px solid;  }
   @if 5 < 3      { border: 2px dotted; }
+  @if null       { border: 3px double; }
 }
 
 $type: monster;
@@ -492,6 +539,72 @@ h1 { @include sexy-border(blue, 2in); }
 p { @include sexy-border($color: blue); }
 h1 { @include sexy-border($color: blue, $width: 2in); }
 
+// Variable Arguments
+
+@mixin box-shadows($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+
+.shadows {
+  @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
+}
+
+@mixin colors($text, $background, $border) {
+  color: $text;
+  background-color: $background;
+  border-color: $border;
+}
+
+$values: #ff0000, #00ff00, #0000ff;
+.primary {
+  @include colors($values...);
+}
+
+@mixin wrapped-stylish-mixin($args...) {
+  font-weight: bold;
+  @include stylish-mixin($args...);
+}
+
+.stylish {
+  // The $width argument will get passed on to "stylish-mixin" as a keyword
+  @include wrapped-stylish-mixin(#00ff00, $width: 100px);
+}
+
+// Passing Content Blocks to a Mixin
+
+@mixin apply-to-ie6-only {
+  * html {
+    @content;
+  }
+}
+@include apply-to-ie6-only {
+  #logo {
+    background-image: url(/logo.gif);
+  }
+}
+
+// Variable Scope and Content Blocks
+
+$color: white;
+@mixin colors($color: blue) {
+  background-color: $color;
+  @content;
+  border-color: $color;
+}
+.colors {
+  @include colors { color: $color; }
+}
+
+#sidebar {
+  $sidebar-width: 300px;
+  width: $sidebar-width;
+  @include smartphone {
+    width: $sidebar-width / 3;
+  }
+}
+
 // Function Directives
 
 $grid-width: 40px;
@@ -502,6 +615,7 @@ $gutter-width: 10px;
 }
 
 #sidebar { width: grid-width(5); }
+#sidebar { width: grid-width($n: 5); }
 
 // TODO: todo should be highlighted, ticket #21
 /* TODO: same here */
