@@ -23,7 +23,7 @@ syn match cssSpecialCharQ +\\\\\|\\'+ contained
 syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=TOP
 
 syn match scssProperty "\%([[:alnum:]-]\)\+\s*:" contains=css.*Prop containedin=cssMediaBlock,scssDefinition nextgroup=scssAttribute
-syn match scssAttribute ":.*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssStringQ,cssStringQQ,cssUrl,scssDefault,scssFn,scssInterpolation,scssVariable containedin=scssProperty
+syn match scssAttribute ":.*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssStringQ,cssStringQQ,cssUrl,scssDefault,scssFn,scssInterpolation,scssNull,scssVariable containedin=scssProperty
 
 " XXX redefining font keyword to avoid it being displayed as deprecated
 syn keyword cssFontProp font
@@ -46,6 +46,7 @@ syn region scssFn contained matchgroup=scssFnName start="\<\([[:alnum:]-]\)\+\s*
 
 syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFn
 syn match scssVariableAssignment "($[[:alnum:]_-]\+\s*)\@<=:" nextgroup=scssAttribute
+syn keyword scssNull null contained;
 
 syn match scssMixin "^@mixin" nextgroup=scssMixinName
 syn match scssMixinName " [[:alnum:]_-]\+[^{;]*" contained contains=scssMixinParams nextgroup=scssDefinition
@@ -96,6 +97,7 @@ syn match scssComment "//.*$" contains=@Spell
 syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=cssComment,scssComment
 
 hi def link scssVariable  Identifier
+hi def link scssNull      Constant
 hi def link scssMixin     PreProc
 hi def link scssMixinName Function
 hi def link scssFunction  PreProc
