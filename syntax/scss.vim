@@ -22,7 +22,7 @@ syn match cssSpecialCharQ +\\\\\|\\'+ contained
 
 syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=TOP
 
-syn match scssProperty "\%([[:alnum:]-]\)\+\s*:" contains=css.*Prop containedin=cssMediaBlock,scssDefinition nextgroup=scssAttribute
+syn match scssProperty "\%([[:alnum:]-]\)\+\s*:" contains=css.*Prop,cssVendor containedin=cssMediaBlock,scssDefinition nextgroup=scssAttribute
 syn match scssAttribute ":.*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssStringQ,cssStringQQ,cssUrl,scssDefault,scssFn,scssInterpolation,scssNull,scssVariable containedin=scssProperty
 
 " XXX redefining font keyword to avoid it being displayed as deprecated
