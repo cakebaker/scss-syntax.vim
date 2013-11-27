@@ -56,7 +56,8 @@ syn match scssInclude "@include\s\+[[:alnum:]_-]\+" contains=scssMixinName nextg
 syn match scssFunction "^@function" nextgroup=scssFunctionName
 syn match scssFunctionName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssReturn "@return" containedin=scssFunction
-syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar,scssPlaceholderChar
+syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar,scssPlaceholderChar,scssOptional
+syn match scssOptional "!optional" contained
 syn region scssImport start="@import" end=/\ze;/ contains=cssStringQ,cssStringQQ,cssComment,cssUnicodeEscape,cssMediaType,cssUrl,scssComment
 
 syn match scssColor "#[0-9A-Fa-f]\{3\}\>" contained
@@ -107,6 +108,7 @@ hi def link scssFnName    Function
 hi def link scssReturn    Statement
 hi def link scssInclude   PreProc
 hi def link scssExtend    PreProc
+hi def link scssOptional  Special
 hi def link scssComment   Comment
 hi def link scssColor     Constant
 hi def link scssIdChar    Special
