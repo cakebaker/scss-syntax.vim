@@ -28,7 +28,7 @@ syn match scssAttribute ":.*;" contains=css.*Attr,cssValue.*,cssColor,cssFunctio
 " XXX redefining font keyword to avoid it being displayed as deprecated
 syn keyword cssFontProp font
 
-syn region scssInterpolation start="#{" end="}" contains=scssVariable containedin=cssString.*,cssUrl,scssFn
+syn region scssInterpolation start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFn,scssOperator,scssVariable containedin=cssString.*,cssUrl,scssFn
 
 " functions from http://sass-lang.com/documentation/Sass/Script/Functions.html
 syn region scssFn contained matchgroup=scssFnName start="\<\(rgb\|rgba\|red\|green\|blue\|mix\)\s*(" end=")" oneline keepend
