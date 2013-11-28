@@ -23,12 +23,12 @@ syn match cssSpecialCharQ +\\\\\|\\'+ contained
 syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=TOP
 
 syn match scssProperty "\%([[:alnum:]-]\)\+\s*:" contains=css.*Prop,cssVendor containedin=cssMediaBlock,scssDefinition nextgroup=scssAttribute
-syn match scssAttribute ":.*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssStringQ,cssStringQQ,cssUrl,scssDefault,scssFn,scssInterpolation,scssNull,scssVariable containedin=scssProperty
+syn match scssAttribute ":.*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssUrl,scssDefault,scssFn,scssInterpolation,scssNull,scssVariable containedin=scssProperty
 
 " XXX redefining font keyword to avoid it being displayed as deprecated
 syn keyword cssFontProp font
 
-syn region scssInterpolation start="#{" end="}" contains=scssVariable containedin=cssStringQ,cssStringQQ,cssUrl,scssFn
+syn region scssInterpolation start="#{" end="}" contains=scssVariable containedin=cssString.*,cssUrl,scssFn
 
 " functions from http://sass-lang.com/documentation/Sass/Script/Functions.html
 syn region scssFn contained matchgroup=scssFnName start="\<\(rgb\|rgba\|red\|green\|blue\|mix\)\s*(" end=")" oneline keepend
@@ -50,7 +50,7 @@ syn keyword scssNull null contained;
 
 syn match scssMixin "^@mixin" nextgroup=scssMixinName
 syn match scssMixinName " [[:alnum:]_-]\+[^{;]*" contained contains=scssMixinParams nextgroup=scssDefinition
-syn region scssMixinParams contained contains=cssColor,cssValue.*,cssStringQ,cssStringQQ,scssVariable,scssFn start="(" end=")" oneline extend
+syn region scssMixinParams contained contains=cssColor,cssValue.*,cssString.*,scssVariable,scssFn start="(" end=")" oneline extend
 syn match scssInclude "@include\s\+[[:alnum:]_-]\+" contains=scssMixinName nextgroup=scssMixinParams
 
 syn match scssFunction "^@function" nextgroup=scssFunctionName
@@ -58,7 +58,7 @@ syn match scssFunctionName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssReturn "@return" containedin=scssFunction
 syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar,scssPlaceholderChar,scssOptional
 syn match scssOptional "!optional" contained
-syn region scssImport start="@import" end=/\ze;/ contains=cssStringQ,cssStringQQ,cssComment,cssUnicodeEscape,cssMediaType,cssUrl,scssComment
+syn region scssImport start="@import" end=/\ze;/ contains=cssString.*,cssComment,cssUnicodeEscape,cssMediaType,cssUrl,scssComment
 
 syn match scssColor "#[0-9A-Fa-f]\{3\}\>" contained
 syn match scssColor "#[0-9A-Fa-f]\{6\}\>" contained
