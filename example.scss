@@ -647,6 +647,8 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   content: "\\";
 }
 
+@import "icons/*.png"; // issue #14, don't treat "/*" as the start of a comment
+
 div {
   height: 10px;
 }
