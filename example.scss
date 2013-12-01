@@ -649,6 +649,13 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
 
 @import "icons/*.png"; // issue #14, don't treat "/*" as the start of a comment
 
+.foo { // issue #5, lines without {} colored incorrectly
+  label.due input[type=text]
+  {
+    padding-right: 25px;
+  }
+}
+
 div {
   height: 10px;
 }
