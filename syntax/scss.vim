@@ -86,13 +86,10 @@ syn match scssIf "@if"
 syn match scssElse "@else"
 syn match scssElseIf "@else if"
 syn match scssWhile "@while"
-syn match scssFor "@for" nextgroup=scssVariable
-syn match scssFrom " from "
-syn match scssTo " to "
-syn match scssThrough " through "
+syn match scssFor "@for\s\+.*from\s\+.*\(to\|through\)\s\+[^{ ]\+" contains=cssValueNumber,scssFn,scssVariable
 syn match scssEach "@each" nextgroup=scssVariable
 syn match scssIn " in "
-syn cluster scssControl contains=scssIf,scssElse,scssElseIf,scssWhile,scssFor,scssFrom,scssTo,scssThrough,scssEach,scssIn
+syn cluster scssControl contains=scssIf,scssElse,scssElseIf,scssWhile,scssFor,scssEach,scssIn
 
 syn match scssComment "//.*$" contains=@Spell
 syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=cssComment,scssComment
@@ -125,9 +122,6 @@ hi def link scssElse      Conditional
 hi def link scssElseIf    Conditional
 hi def link scssWhile     Repeat
 hi def link scssFor       Repeat
-hi def link scssFrom      Repeat
-hi def link scssTo        Repeat
-hi def link scssThrough   Repeat
 hi def link scssEach      Repeat
 hi def link scssIn        Repeat
 hi def link scssInterpolation Delimiter
