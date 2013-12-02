@@ -448,6 +448,10 @@ p {
   .item-#{$1} { width: 2em * $i; }
 }
 
+@for $i from 1 to 3 {
+  .item-#{$1} { width: 2em * $i; }
+}
+
 // @each
 
 @each $animal in puma, sea-slug, egret, salamander {
