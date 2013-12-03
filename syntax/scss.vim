@@ -87,9 +87,9 @@ syn match scssElse "@else"
 syn match scssElseIf "@else if"
 syn match scssWhile "@while"
 syn match scssFor "@for\s\+.*from\s\+.*\(to\|through\)\s\+[^{ ]\+" contains=cssValueNumber,scssFn,scssVariable
-syn match scssEach "@each" nextgroup=scssVariable
-syn match scssIn " in "
-syn cluster scssControl contains=scssIf,scssElse,scssElseIf,scssWhile,scssFor,scssEach,scssIn
+syn match scssEach "@each\s\+\$[[:alnum:]_-]\+\s\+in\(\s\+[^{]\+\)\@=" contains=scssVariable nextgroup=scssList
+syn match scssList "[^{]\+" contained contains=scssFn,scssVariable
+syn cluster scssControl contains=scssIf,scssElse,scssElseIf,scssWhile,scssFor,scssEach
 
 syn match scssComment "//.*$" contains=@Spell
 syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=cssComment,scssComment
@@ -123,7 +123,6 @@ hi def link scssElseIf    Conditional
 hi def link scssWhile     Repeat
 hi def link scssFor       Repeat
 hi def link scssEach      Repeat
-hi def link scssIn        Repeat
 hi def link scssInterpolation Delimiter
 hi def link scssImport    Include
 hi def link scssTodo      Todo
