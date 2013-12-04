@@ -52,6 +52,7 @@ syn match scssMixin "^@mixin" nextgroup=scssMixinName
 syn match scssMixinName " [[:alnum:]_-]\+[^{;]*" contained contains=scssMixinParams nextgroup=scssDefinition
 syn region scssMixinParams contained contains=cssColor,cssValue.*,cssString.*,scssVariable,scssFn start="(" end=")" oneline extend
 syn match scssInclude "@include\s\+[[:alnum:]_-]\+" contains=scssMixinName nextgroup=scssMixinParams
+syn match scssContent "@content" contained containedin=scssDefinition
 
 syn match scssFunction "^@function" nextgroup=scssFunctionName
 syn match scssFunctionName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
@@ -98,6 +99,7 @@ hi def link scssVariable  Identifier
 hi def link scssNull      Constant
 hi def link scssMixin     PreProc
 hi def link scssMixinName Function
+hi def link scssContent   PreProc
 hi def link scssFunction  PreProc
 hi def link scssFunctionName Function
 hi def link scssFn        Constant
