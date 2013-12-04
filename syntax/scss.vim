@@ -85,7 +85,7 @@ syn match scssDefault "!default" contained
 syn match scssIf "@\(else \)\=if\(\s\+[^{]\+\)\@=" nextgroup=scssCondition
 syn match scssCondition "[^{]\+" contained contains=cssValue.*,cssString.*,scssFn,scssNull,scssVariable
 syn match scssElse "@else\(\s*\({\|$\)\)\@="
-syn match scssWhile "@while"
+syn match scssWhile "@while" nextgroup=scssCondition
 syn match scssFor "@for\s\+.*from\s\+.*\(to\|through\)\s\+[^{ ]\+" contains=cssValueNumber,scssFn,scssVariable
 syn match scssEach "@each\s\+\$[[:alnum:]_-]\+\s\+in\(\s\+[^{]\+\)\@=" contains=scssVariable nextgroup=scssList
 syn match scssList "[^{]\+" contained contains=scssFn,scssVariable
