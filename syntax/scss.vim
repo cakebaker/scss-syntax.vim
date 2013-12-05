@@ -65,9 +65,9 @@ syn match scssImportList "[^;]\+" contained contains=cssString.*,cssMediaType,cs
 syn match scssColor "#[0-9A-Fa-f]\{3\}\>" contained
 syn match scssColor "#[0-9A-Fa-f]\{6\}\>" contained
 
-syn match scssIdChar "#[[:alnum:]_-]\@=" nextgroup=scssSelectorName contains=scssColor
-syn match scssClassChar "\.[[:alnum:]_-]\@=" nextgroup=scssSelectorName
-syn match scssPlaceholderChar "%[[:alnum:]_-]\@=" nextgroup=scssSelectorName
+syn match scssIdChar "#[[:alnum:]_-]\@=" nextgroup=scssSelectorName contains=scssColor containedin=cssMediaBlock
+syn match scssClassChar "\.[[:alnum:]_-]\@=" nextgroup=scssSelectorName containedin=cssMediaBlock
+syn match scssPlaceholderChar "%[[:alnum:]_-]\@=" nextgroup=scssSelectorName containedin=cssMediaBlock
 syn match scssSelectorName "[[:alnum:]_-]\+" contained
 
 syn match scssAmpersand "&" nextgroup=cssPseudoClass
