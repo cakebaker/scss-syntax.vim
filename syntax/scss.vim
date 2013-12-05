@@ -31,18 +31,18 @@ syn keyword cssFontProp font
 syn region scssInterpolation start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFn,scssOperator,scssVariable containedin=cssString.*,cssUrl,scssFn
 
 " functions from http://sass-lang.com/documentation/Sass/Script/Functions.html
-syn region scssFn contained matchgroup=scssFnName start="\<\(rgb\|rgba\|red\|green\|blue\|mix\)\s*(" end=")" oneline keepend
-syn region scssFn contained matchgroup=scssFnName start="\<\(hsl\|hsla\|hue\|saturation\|lightness\|adjust-hue\)\s*(" end=")" oneline keepend
-syn region scssFn contained matchgroup=scssFnName start="\<\(lighten\|darken\|saturate\|desaturate\|grayscale\|complement\|invert\)\s*(" end=")" oneline keepend
-syn region scssFn contained matchgroup=scssFnName start="\<\(alpha\|opacity\|opacify\|fade-in\|transparentize\|fade-out\)\s*(" end=")" oneline keepend
-syn region scssFn contained matchgroup=scssFnName start="\<\(adjust-color\|scale-color\|change-color\|ie-hex-str\)\s*(" end=")" oneline keepend
-syn region scssFn contained matchgroup=scssFnName start="\<\(unquote\|quote\)\s*(" end=")" oneline keepend
-syn region scssFn contained matchgroup=scssFnName start="\<\(percentage\|round\|ceil\|floor\|abs\|min\|max\)\s*(" end=")" oneline keepend
-syn region scssFn contained matchgroup=scssFnName start="\<\(length\|nth\|join\|append\|zip\|index\)\s*(" end=")" oneline keepend
-syn region scssFn contained matchgroup=scssFnName start="\<\(type-of\|unit\|unitless\|comparable\)\s*(" end=")" oneline keepend
-syn region scssFn contained matchgroup=scssFnName start="\<\(if\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFunctionName start="\<\(rgb\|rgba\|red\|green\|blue\|mix\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFunctionName start="\<\(hsl\|hsla\|hue\|saturation\|lightness\|adjust-hue\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFunctionName start="\<\(lighten\|darken\|saturate\|desaturate\|grayscale\|complement\|invert\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFunctionName start="\<\(alpha\|opacity\|opacify\|fade-in\|transparentize\|fade-out\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFunctionName start="\<\(adjust-color\|scale-color\|change-color\|ie-hex-str\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFunctionName start="\<\(unquote\|quote\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFunctionName start="\<\(percentage\|round\|ceil\|floor\|abs\|min\|max\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFunctionName start="\<\(length\|nth\|join\|append\|zip\|index\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFunctionName start="\<\(type-of\|unit\|unitless\|comparable\)\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFunctionName start="\<\(if\)\s*(" end=")" oneline keepend
 " custom functions
-syn region scssFn contained matchgroup=scssFnName start="\<\([[:alnum:]-]\)\+\s*(" end=")" oneline keepend
+syn region scssFn contained matchgroup=scssFunctionName start="\<\([[:alnum:]-]\)\+\s*(" end=")" oneline keepend
 
 syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFn
 syn match scssVariableAssignment "($[[:alnum:]_-]\+\s*)\@<=:" nextgroup=scssAttribute
@@ -104,7 +104,6 @@ hi def link scssContent   PreProc
 hi def link scssFunction  PreProc
 hi def link scssFunctionName Function
 hi def link scssFn        Constant
-hi def link scssFnName    Function
 hi def link scssReturn    Statement
 hi def link scssInclude   PreProc
 hi def link scssExtend    PreProc
