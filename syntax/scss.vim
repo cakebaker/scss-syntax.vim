@@ -77,9 +77,6 @@ syn match scssOperator "-" contained
 syn match scssOperator "/" contained
 syn match scssOperator "*" contained
 
-syn match scssNestedSelector "[^/]* {"me=e-1 contained contains=cssTagName,cssAttributeSelector,scssIdChar,scssClassChar,scssPlaceholderChar,scssAmpersand,scssVariable,scssMixin,scssInclude,scssFunction,@scssControl,scssInterpolation,scssNestedProperty
-syn match scssNestedProperty "[[:alnum:]]\+:"me=e-1 contained
-
 syn match scssDebug "@debug"
 syn match scssWarn "@warn"
 syn match scssDefault "!default" contained
@@ -115,7 +112,6 @@ hi def link scssClassChar Special
 hi def link scssPlaceholderChar Special
 hi def link scssSelectorName Identifier
 hi def link scssAmpersand Character
-hi def link scssNestedProperty Type
 hi def link scssDebug     Debug
 hi def link scssWarn      Debug
 hi def link scssDefault   Special
