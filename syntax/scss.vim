@@ -59,7 +59,8 @@ syn match scssFunctionName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssReturn "@return" containedin=scssFunction
 syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar,scssPlaceholderChar,scssOptional
 syn match scssOptional "!optional" contained
-syn region scssImport start="@import" end=/\ze;/ contains=cssString.*,cssComment,cssUnicodeEscape,cssMediaType,cssUrl,scssComment
+syn match scssImport "@import" nextgroup=scssImportList
+syn match scssImportList "[^;]\+" contained contains=cssString.*,cssMediaType,cssUrl
 
 syn match scssColor "#[0-9A-Fa-f]\{3\}\>" contained
 syn match scssColor "#[0-9A-Fa-f]\{6\}\>" contained
