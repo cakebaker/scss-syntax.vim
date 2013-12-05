@@ -20,13 +20,13 @@ syn case ignore
 syn match cssSpecialCharQQ +\\\\\|\\"+ contained
 syn match cssSpecialCharQ +\\\\\|\\'+ contained
 
+" XXX redefining font keyword to avoid it being displayed as deprecated
+syn keyword cssFontProp font
+
 syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=TOP
 
 syn match scssProperty "\%([[:alnum:]-]\)\+\s*:" contains=css.*Prop,cssVendor containedin=cssMediaBlock,scssDefinition nextgroup=scssAttribute
 syn match scssAttribute ":.*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssUrl,scssDefault,scssFn,scssInterpolation,scssNull,scssVariable containedin=scssProperty
-
-" XXX redefining font keyword to avoid it being displayed as deprecated
-syn keyword cssFontProp font
 
 syn region scssInterpolation start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFn,scssOperator,scssVariable containedin=cssString.*,cssUrl,scssFn
 
