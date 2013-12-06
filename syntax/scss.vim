@@ -43,6 +43,7 @@ syn region scssFn contained matchgroup=scssFunctionName start="\<\(type-of\|unit
 syn region scssFn contained matchgroup=scssFunctionName start="\<\(if\)\s*(" end=")" oneline keepend
 " custom functions
 syn region scssFn contained matchgroup=scssFunctionName start="\<\([[:alnum:]-]\)\+\s*(" end=")" oneline keepend
+syn match scssParameterList ".*" contained containedin=cssFunction,scssFn contains=cssString.*,cssValue.*,scssVariable
 
 syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFn
 syn match scssVariableAssignment "($[[:alnum:]_-]\+\s*)\@<=:" nextgroup=scssAttribute
