@@ -23,7 +23,7 @@ syn match cssSpecialCharQ +\\\\\|\\'+ contained
 " XXX redefining font keyword to avoid it being displayed as deprecated
 syn keyword cssFontProp font
 
-syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=TOP
+syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=TOP containedin=cssMediaBlock
 
 syn match scssProperty "\%([[:alnum:]-]\)\+\s*:" contains=css.*Prop,cssVendor containedin=cssMediaBlock,scssDefinition nextgroup=scssAttribute
 syn match scssAttribute ":.*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssUrl,scssDefault,scssFn,scssInterpolation,scssNull,scssVariable containedin=scssProperty
