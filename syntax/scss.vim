@@ -25,8 +25,73 @@ syn keyword cssFontProp font
 
 syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=TOP containedin=cssMediaBlock
 
-syn match scssProperty "\%([[:alnum:]-]\)\+\s*:" contains=css.*Prop,cssVendor containedin=cssMediaBlock,scssDefinition nextgroup=scssAttribute
+syn match scssProperty "\%([[:alnum:]-]\)\+\s*:" contains=css.*Prop,cssVendor containedin=cssMediaBlock,scssDefinition nextgroup=scssAttribute,scssAttributeWithNestedDefinition
 syn match scssAttribute ":.*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssUrl,scssDefault,scssFunction,scssInterpolation,scssNull,scssVariable containedin=scssProperty
+
+syn match scssAttributeWithNestedDefinition ": [^#]*{\@=" nextgroup=scssNestedDefinition contains=cssValue.*,scssVariable
+syn region scssNestedDefinition matchgroup=cssBraces start="{" end="}" contained contains=scssNestedProperty,scssProperty
+
+" CSS properties from https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+" align
+syn keyword scssNestedProperty contained content items self nextgroup=scssAttribute
+" animation
+syn keyword scssNestedProperty contained delay direction duration fill-mode iteration-count name play-state timing-function nextgroup=scssAttribute
+" background
+syn keyword scssNestedProperty contained attachment clip color image origin position repeat size nextgroup=scssAttribute
+" border
+syn keyword scssNestedProperty contained bottom bottom-color bottom-left-radius bottom-right-radius bottom-style bottom-width nextgroup=scssAttribute
+syn keyword scssNestedProperty contained collapse color nextgroup=scssAttribute
+syn keyword scssNestedProperty contained image image-outset image-repeat image-slice image-source image-width nextgroup=scssAttribute
+syn keyword scssNestedProperty contained left left-color left-style left-width nextgroup=scssAttribute
+syn keyword scssNestedProperty contained radius nextgroup=scssAttribute
+syn keyword scssNestedProperty contained right right-color right-style right-width nextgroup=scssAttribute
+syn keyword scssNestedProperty contained spacing style nextgroup=scssAttribute
+syn keyword scssNestedProperty contained top top-color top-left-radius top-right-radius top-style top-width nextgroup=scssAttribute
+syn keyword scssNestedProperty contained width nextgroup=scssAttribute
+" box
+syn keyword scssNestedProperty contained decoration-break shadow sizing nextgroup=scssAttribute
+" break
+syn keyword scssNestedProperty contained after before inside nextgroup=scssAttribute
+" column
+syn keyword scssNestedProperty contained count fill gap rule rule-color rule-style rule-width span width nextgroup=scssAttribute
+" counter
+syn keyword scssNestedProperty contained increment reset nextgroup=scssAttribute
+" flex
+syn keyword scssNestedProperty contained basis direction flow grow shrink wrap nextgroup=scssAttribute
+" font
+syn keyword scssNestedProperty contained family feature-settings kerning language-override size size-adjust stretch style synthesis nextgroup=scssAttribute
+syn keyword scssNestedProperty contained variant variant-alternates variant-caps variant-east-asian variant-ligatures variant-numeric variant-position nextgroup=scssAttribute
+syn keyword scssNestedProperty contained weight nextgroup=scssAttribute
+" image
+syn keyword scssNestedProperty contained rendering resolution orientation nextgroup=scssAttribute
+" list
+syn keyword scssNestedProperty contained style style-image style-position style-type nextgroup=scssAttribute
+" margin/padding
+syn keyword scssNestedProperty contained bottom left right top nextgroup=scssAttribute
+" max/min
+syn keyword scssNestedProperty contained height width nextgroup=scssAttribute
+" nav
+syn keyword scssNestedProperty contained down index left right up nextgroup=scssAttribute
+" object
+syn keyword scssNestedProperty contained fit position nextgroup=scssAttribute
+" outline
+syn keyword scssNestedProperty contained color offset style width nextgroup=scssAttribute
+" overflow
+syn keyword scssNestedProperty contained wrap x y nextgroup=scssAttribute
+" page
+syn keyword scssNestedProperty contained break-after break-before break-inside nextgroup=scssAttribute
+" text
+syn keyword scssNestedProperty contained align align-last combine-horizontal nextgroup=scssAttribute
+syn keyword scssNestedProperty contained decoration decoration-color decoration-line decoration-style nextgroup=scssAttribute
+syn keyword scssNestedProperty contained indent orientation overflow rendering shadow transform underline-position nextgroup=scssAttribute
+" transform
+syn keyword scssNestedProperty contained origin style nextgroup=scssAttribute
+" transition
+syn keyword scssNestedProperty contained delay duration property timing-function nextgroup=scssAttribute
+" unicode
+syn keyword scssNestedProperty contained bidi range nextgroup=scssAttribute
+" word
+syn keyword scssNestedProperty contained break spacing wrap nextgroup=scssAttribute
 
 syn region scssInterpolation start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFunction,scssOperator,scssVariable containedin=cssString.*,cssUrl,scssFunction
 
@@ -94,6 +159,7 @@ syn cluster scssControl contains=scssIf,scssElse,scssWhile,scssFor,scssEach
 syn match scssComment "//.*$" contains=@Spell
 syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=cssComment,scssComment
 
+hi def link scssNestedProperty cssProp
 hi def link scssVariable  Identifier
 hi def link scssNull      Constant
 hi def link scssMixin     PreProc
