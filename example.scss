@@ -660,6 +660,14 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   }
 }
 
+.funky { // comments after nested properties should be recognized
+  font: {
+    family: fantasy; // a comment
+    size: 30em;      /* another comment */
+    weight: bold;
+  }
+}
+
 div {
   height: 10px;
 }
