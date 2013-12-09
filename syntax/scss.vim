@@ -110,7 +110,7 @@ syn region scssFunction contained matchgroup=scssFunctionName start="\<\(if\)\s*
 syn region scssFunction contained matchgroup=scssFunctionName start="\<\([[:alnum:]-]\)\+\s*(" end=")" oneline keepend
 syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=cssString.*,cssValue.*,scssVariable
 
-syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction
+syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction,cssMediaType
 syn match scssVariableAssignment "($[[:alnum:]_-]\+\s*)\@<=:" nextgroup=scssAttribute
 syn keyword scssNull null contained;
 
