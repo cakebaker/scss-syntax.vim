@@ -93,7 +93,7 @@ syn keyword scssNestedProperty contained bidi range nextgroup=scssAttribute
 " word
 syn keyword scssNestedProperty contained break spacing wrap nextgroup=scssAttribute
 
-syn region scssInterpolation start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFunction,scssOperator,scssVariable containedin=cssString.*,cssUrl,scssFunction
+syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFunction,scssVariable containedin=cssString.*,cssUrl,scssFunction
 
 " functions from http://sass-lang.com/documentation/Sass/Script/Functions.html
 syn region scssFunction contained matchgroup=scssFunctionName start="\<\(rgb\|rgba\|red\|green\|blue\|mix\)\s*(" end=")" oneline keepend
@@ -134,11 +134,6 @@ syn match scssPlaceholderChar "%[[:alnum:]_-]\@=" nextgroup=scssSelectorName con
 syn match scssSelectorName "[[:alnum:]_-]\+" contained
 
 syn match scssAmpersand "&" nextgroup=cssPseudoClass
-
-syn match scssOperator "+" contained
-syn match scssOperator "-" contained
-syn match scssOperator "/" contained
-syn match scssOperator "*" contained
 
 syn match scssDebug "@debug"
 syn match scssWarn "@warn"
@@ -183,7 +178,7 @@ hi def link scssElse      Conditional
 hi def link scssWhile     Repeat
 hi def link scssFor       Repeat
 hi def link scssEach      Repeat
-hi def link scssInterpolation Delimiter
+hi def link scssInterpolationDelimiter Delimiter
 hi def link scssImport    Include
 hi def link scssTodo      Todo
 
