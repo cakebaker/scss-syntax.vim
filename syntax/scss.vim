@@ -128,10 +128,7 @@ syn match scssOptional "!optional" contained
 syn match scssImport "@import" nextgroup=scssImportList
 syn match scssImportList "[^;]\+" contained contains=cssString.*,cssMediaType,cssUrl
 
-syn match scssColor "#[0-9A-Fa-f]\{3\}\>" contained
-syn match scssColor "#[0-9A-Fa-f]\{6\}\>" contained
-
-syn match scssIdChar "#[[:alnum:]_-]\@=" nextgroup=scssSelectorName contains=scssColor containedin=cssMediaBlock
+syn match scssIdChar "#[[:alnum:]_-]\@=" nextgroup=scssSelectorName containedin=cssMediaBlock
 syn match scssClassChar "\.[[:alnum:]_-]\@=" nextgroup=scssSelectorName containedin=cssMediaBlock
 syn match scssPlaceholderChar "%[[:alnum:]_-]\@=" nextgroup=scssSelectorName containedin=cssMediaBlock
 syn match scssSelectorName "[[:alnum:]_-]\+" contained
@@ -173,7 +170,6 @@ hi def link scssInclude   PreProc
 hi def link scssExtend    PreProc
 hi def link scssOptional  Special
 hi def link scssComment   Comment
-hi def link scssColor     Constant
 hi def link scssIdChar    Special
 hi def link scssClassChar Special
 hi def link scssPlaceholderChar Special
