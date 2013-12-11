@@ -120,8 +120,8 @@ syn region scssMixinParams contained contains=cssColor,cssValue.*,cssString.*,sc
 syn match scssInclude "@include\s\+[[:alnum:]_-]\+" contains=scssMixinName nextgroup=scssMixinParams
 syn match scssContent "@content" contained containedin=scssDefinition
 
-syn match scssFunctionDefinition "^@function" nextgroup=scssFunctionName
-syn match scssFunctionName " [[:alnum:]_-]\+" contained nextgroup=scssDefinition
+syn match scssFunctionDefinition "^@function" nextgroup=scssFunctionName skipwhite
+syn match scssFunctionName "[[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssReturn "@return" containedin=scssFunction
 syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar,scssPlaceholderChar,scssOptional
 syn match scssOptional "!optional" contained
