@@ -114,10 +114,10 @@ syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction,c
 syn match scssVariableAssignment "($[[:alnum:]_-]\+\s*)\@<=:" nextgroup=scssAttribute
 syn keyword scssNull null contained;
 
-syn match scssMixin "^@mixin" nextgroup=scssMixinName
-syn match scssMixinName " [[:alnum:]_-]\+[^{;]*" contained contains=scssMixinParams nextgroup=scssDefinition
+syn match scssMixin "^@mixin" nextgroup=scssMixinName skipwhite
+syn match scssMixinName "[[:alnum:]_-]\+[^{;]*" contained contains=scssMixinParams nextgroup=scssDefinition
 syn region scssMixinParams contained contains=cssColor,cssValue.*,cssString.*,scssVariable,scssFunction start="(" end=")" oneline extend
-syn match scssInclude "@include\s\+[[:alnum:]_-]\+" contains=scssMixinName nextgroup=scssMixinParams
+syn match scssInclude "@include" nextgroup=scssMixinName skipwhite
 syn match scssContent "@content" contained containedin=scssDefinition
 
 syn match scssFunctionDefinition "^@function" nextgroup=scssFunctionName skipwhite
