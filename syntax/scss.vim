@@ -123,7 +123,8 @@ syn match scssContent "@content" contained containedin=scssDefinition
 syn match scssFunctionDefinition "^@function" nextgroup=scssFunctionName skipwhite
 syn match scssFunctionName "[[:alnum:]_-]\+" contained nextgroup=scssDefinition
 syn match scssReturn "@return" containedin=scssFunction
-syn match scssExtend "@extend .*[;}]"me=e-1 contains=cssTagName,scssIdChar,scssClassChar,scssPlaceholderChar,scssOptional
+syn match scssExtend "@extend" nextgroup=scssExtendedSelector skipwhite
+syn match scssExtendedSelector "[^ ;]\+" contained contains=cssTagName,cssPseudoClass,scssIdChar,scssClassChar,scssPlaceholderChar nextgroup=scssOptional skipwhite
 syn match scssOptional "!optional" contained
 syn match scssImport "@import" nextgroup=scssImportList
 syn match scssImportList "[^;]\+" contained contains=cssString.*,cssMediaType,cssUrl
