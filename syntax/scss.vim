@@ -136,8 +136,9 @@ syn match scssSelectorName "[[:alnum:]_-]\+" contained
 
 syn match scssAmpersand "&" nextgroup=cssPseudoClass
 
-syn match scssDebug "@debug"
-syn match scssWarn "@warn"
+syn match scssDebug "@debug" nextgroup=scssOutput
+syn match scssWarn "@warn" nextgroup=scssOutput
+syn match scssOutput "[^;]\+" contained contains=cssValue.*,cssString.*,scssFunction,scssVariable
 syn match scssDefault "!default" contained
 
 syn match scssIf "@\(else \)\=if" nextgroup=scssCondition
