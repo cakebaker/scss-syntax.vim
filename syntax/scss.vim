@@ -145,7 +145,8 @@ syn match scssIf "@\(else \)\=if" nextgroup=scssCondition
 syn match scssCondition "[^{]\+" contained contains=cssValue.*,cssString.*,scssFunction,scssNull,scssVariable
 syn match scssElse "@else\(\s*\({\|$\)\)\@="
 syn match scssWhile "@while" nextgroup=scssCondition
-syn match scssFor "@for\s\+.*from\s\+.*\(to\|through\)\s\+[^{ ]\+" contains=cssValueNumber,scssFunction,scssVariable
+syn match scssFor "@for\s\+.*from\s\+.*\(to\|through\)\s\+[^{ ]\+" contains=cssValueNumber,scssFunction,scssVariable,scssForKeyword
+syn match scssForKeyword "@for\|from\|to\|through" contained
 syn match scssEach "@each\s\+\$[[:alnum:]_-]\+\s\+in" contains=scssVariable nextgroup=scssList
 syn match scssList "[^{]\+" contained contains=scssFunction,scssVariable
 syn cluster scssControl contains=scssIf,scssElse,scssWhile,scssFor,scssEach
@@ -178,7 +179,7 @@ hi def link scssDefault   Special
 hi def link scssIf        Conditional
 hi def link scssElse      Conditional
 hi def link scssWhile     Repeat
-hi def link scssFor       Repeat
+hi def link scssForKeyword  Repeat
 hi def link scssEach      Repeat
 hi def link scssInterpolationDelimiter Delimiter
 hi def link scssImport    Include
