@@ -141,8 +141,9 @@ syn match scssWarn "@warn" nextgroup=scssOutput
 syn match scssOutput "[^;]\+" contained contains=cssValue.*,cssString.*,scssFunction,scssVariable
 syn match scssDefault "!default" contained
 
-syn match scssIf "@\(else \)\=if" nextgroup=scssCondition
+syn match scssIf "@\=if" nextgroup=scssCondition
 syn match scssCondition "[^{]\+" contained contains=cssValue.*,cssString.*,scssFunction,scssNull,scssVariable
+syn match scssElse "@else" nextgroup=scssIf
 syn match scssElse "@else\(\s*\({\|$\)\)\@="
 syn match scssWhile "@while" nextgroup=scssCondition
 syn match scssFor "@for\s\+.*from\s\+.*\(to\|through\)\s\+[^{ ]\+" contains=cssValueNumber,scssFunction,scssVariable,scssForKeyword
