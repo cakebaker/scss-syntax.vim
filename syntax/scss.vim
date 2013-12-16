@@ -95,18 +95,6 @@ syn keyword scssNestedProperty contained break spacing wrap nextgroup=scssAttrib
 
 syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFunction,scssVariable containedin=cssString.*,cssUrl,scssFunction
 
-" functions from http://sass-lang.com/documentation/Sass/Script/Functions.html
-syn region scssFunction contained matchgroup=scssFunctionName start="\<\(rgb\|rgba\|red\|green\|blue\|mix\)\s*(" end=")" oneline keepend
-syn region scssFunction contained matchgroup=scssFunctionName start="\<\(hsl\|hsla\|hue\|saturation\|lightness\|adjust-hue\)\s*(" end=")" oneline keepend
-syn region scssFunction contained matchgroup=scssFunctionName start="\<\(lighten\|darken\|saturate\|desaturate\|grayscale\|complement\|invert\)\s*(" end=")" oneline keepend
-syn region scssFunction contained matchgroup=scssFunctionName start="\<\(alpha\|opacity\|opacify\|fade-in\|transparentize\|fade-out\)\s*(" end=")" oneline keepend
-syn region scssFunction contained matchgroup=scssFunctionName start="\<\(adjust-color\|scale-color\|change-color\|ie-hex-str\)\s*(" end=")" oneline keepend
-syn region scssFunction contained matchgroup=scssFunctionName start="\<\(unquote\|quote\)\s*(" end=")" oneline keepend
-syn region scssFunction contained matchgroup=scssFunctionName start="\<\(percentage\|round\|ceil\|floor\|abs\|min\|max\)\s*(" end=")" oneline keepend
-syn region scssFunction contained matchgroup=scssFunctionName start="\<\(length\|nth\|join\|append\|zip\|index\)\s*(" end=")" oneline keepend
-syn region scssFunction contained matchgroup=scssFunctionName start="\<\(type-of\|unit\|unitless\|comparable\)\s*(" end=")" oneline keepend
-syn region scssFunction contained matchgroup=scssFunctionName start="\<\(if\)\s*(" end=")" oneline keepend
-" custom functions
 syn region scssFunction contained matchgroup=scssFunctionName start="\<\([[:alnum:]-]\)\+\s*(" end=")" oneline keepend
 syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=cssString.*,cssValue.*,scssVariable
 
@@ -163,7 +151,6 @@ hi def link scssMixinName Function
 hi def link scssContent   PreProc
 hi def link scssFunctionDefinition  PreProc
 hi def link scssFunctionName Function
-hi def link scssFunction  Constant
 hi def link scssReturn    Statement
 hi def link scssInclude   PreProc
 hi def link scssExtend    PreProc
