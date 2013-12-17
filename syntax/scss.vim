@@ -109,8 +109,10 @@ syn match scssInclude "@include" nextgroup=scssMixinName skipwhite
 syn match scssContent "@content" contained containedin=scssDefinition
 
 syn match scssFunctionDefinition "^@function" nextgroup=scssFunctionName skipwhite
-syn match scssFunctionName "[[:alnum:]_-]\+" contained nextgroup=scssDefinition
-syn match scssReturn "@return" containedin=scssFunction
+syn match scssFunctionName "[[:alnum:]_-]\+" contained nextgroup=scssFunctionParams
+syn region scssFunctionParams contained start="(" end=")" nextgroup=scssFunctionBody contains=scssVariable skipwhite
+syn region scssFunctionBody contained matchgroup=cssBraces start="{" end="}" contains=cssString.*,cssValue.*,scssVariable,scssReturn,scssFunction
+syn match scssReturn "@return" contained
 syn match scssExtend "@extend" nextgroup=scssExtendedSelector skipwhite
 syn match scssExtendedSelector "[^ ;]\+" contained contains=cssTagName,cssPseudoClass,scssIdChar,scssClassChar,scssPlaceholderChar nextgroup=scssOptional skipwhite
 syn match scssOptional "!optional" contained
