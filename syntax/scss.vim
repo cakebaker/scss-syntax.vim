@@ -99,7 +99,6 @@ syn region scssFunction contained matchgroup=scssFunctionName start="\<\([[:alnu
 syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=cssString.*,cssValue.*,scssVariable
 
 syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction,cssMediaType
-syn match scssVariableAssignment "($[[:alnum:]_-]\+\s*)\@<=:" nextgroup=scssAttribute
 syn keyword scssNull null contained;
 
 syn match scssMixin "^@mixin" nextgroup=scssMixinName skipwhite
