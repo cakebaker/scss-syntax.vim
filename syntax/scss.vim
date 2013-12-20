@@ -118,7 +118,7 @@ syn match scssOptional "!optional" contained
 syn match scssImport "@import" nextgroup=scssImportList
 syn match scssImportList "[^;]\+" contained contains=cssString.*,cssMediaType,cssUrl
 
-syn match scssSelectorChar "\(#\|\.\|%\)[[:alnum:]_-]\@=" nextgroup=scssSelectorName containedin=cssMediaBlock
+syn match scssSelectorChar "\(#\|\.\|%\)\([[:alnum:]_-]\|#{.*}\)\@=" nextgroup=scssSelectorName containedin=cssMediaBlock
 syn match scssSelectorName "[[:alnum:]_-]\+" contained
 
 syn match scssAmpersand "&" nextgroup=cssPseudoClass
