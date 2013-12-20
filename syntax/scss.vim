@@ -113,14 +113,12 @@ syn region scssFunctionParams contained start="(" end=")" nextgroup=scssFunction
 syn region scssFunctionBody contained matchgroup=cssBraces start="{" end="}" contains=cssString.*,cssValue.*,scssVariable,scssReturn,scssFunction
 syn match scssReturn "@return" contained
 syn match scssExtend "@extend" nextgroup=scssExtendedSelector skipwhite
-syn match scssExtendedSelector "[^ ;]\+" contained contains=cssTagName,cssPseudoClass,scssIdChar,scssClassChar,scssPlaceholderChar nextgroup=scssOptional skipwhite
+syn match scssExtendedSelector "[^ ;]\+" contained contains=cssTagName,cssPseudoClass,scssSelectorChar nextgroup=scssOptional skipwhite
 syn match scssOptional "!optional" contained
 syn match scssImport "@import" nextgroup=scssImportList
 syn match scssImportList "[^;]\+" contained contains=cssString.*,cssMediaType,cssUrl
 
-syn match scssIdChar "#[[:alnum:]_-]\@=" nextgroup=scssSelectorName containedin=cssMediaBlock
-syn match scssClassChar "\.[[:alnum:]_-]\@=" nextgroup=scssSelectorName containedin=cssMediaBlock
-syn match scssPlaceholderChar "%[[:alnum:]_-]\@=" nextgroup=scssSelectorName containedin=cssMediaBlock
+syn match scssSelectorChar "\(#\|\.\|%\)[[:alnum:]_-]\@=" nextgroup=scssSelectorName containedin=cssMediaBlock
 syn match scssSelectorName "[[:alnum:]_-]\+" contained
 
 syn match scssAmpersand "&" nextgroup=cssPseudoClass
@@ -157,9 +155,7 @@ hi def link scssInclude   PreProc
 hi def link scssExtend    PreProc
 hi def link scssOptional  Special
 hi def link scssComment   Comment
-hi def link scssIdChar    Special
-hi def link scssClassChar Special
-hi def link scssPlaceholderChar Special
+hi def link scssSelectorChar Special
 hi def link scssSelectorName Identifier
 hi def link scssAmpersand Character
 hi def link scssDebug     Debug
