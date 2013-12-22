@@ -26,7 +26,7 @@ syn keyword cssFontProp font
 syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=TOP containedin=cssMediaBlock
 
 syn match scssProperty "\%([[:alnum:]-]\)\+\s*:\@=" contains=css.*Prop,cssVendor containedin=cssMediaBlock,scssDefinition nextgroup=scssAttribute,scssAttributeWithNestedDefinition
-syn match scssAttribute ":[^;]*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssUrl,scssDefault,scssFunction,scssInterpolation,scssNull,scssVariable containedin=scssProperty
+syn match scssAttribute ":[^;]*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssDefault,scssFunction,scssInterpolation,scssNull,scssVariable containedin=scssProperty
 
 syn match scssAttributeWithNestedDefinition ": [^#]*{\@=" nextgroup=scssNestedDefinition contains=cssValue.*,scssVariable
 syn region scssNestedDefinition matchgroup=cssBraces start="{" end="}" contained contains=cssComment,scssComment,scssProperty,scssNestedProperty
@@ -93,7 +93,7 @@ syn keyword scssNestedProperty contained bidi range nextgroup=scssAttribute
 " word
 syn keyword scssNestedProperty contained break spacing wrap nextgroup=scssAttribute
 
-syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFunction,scssVariable containedin=cssString.*,cssUrl,scssFunction
+syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFunction,scssVariable containedin=cssString.*,cssURL,scssFunction
 
 syn region scssFunction contained matchgroup=scssFunctionName start="\<\([[:alnum:]-]\)\+\s*(" end=")" oneline keepend
 syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=cssString.*,cssValue.*,scssVariable
@@ -116,7 +116,7 @@ syn match scssExtend "@extend" nextgroup=scssExtendedSelector skipwhite
 syn match scssExtendedSelector "[^ ;]\+" contained contains=cssTagName,cssPseudoClass,scssSelectorChar nextgroup=scssOptional skipwhite
 syn match scssOptional "!optional" contained
 syn match scssImport "@import" nextgroup=scssImportList
-syn match scssImportList "[^;]\+" contained contains=cssString.*,cssMediaType,cssUrl
+syn match scssImportList "[^;]\+" contained contains=cssString.*,cssMediaType,cssURL
 
 syn match scssSelectorChar "\(#\|\.\|%\)\([[:alnum:]_-]\|#{.*}\)\@=" nextgroup=scssSelectorName containedin=cssMediaBlock
 syn match scssSelectorName "\([[:alnum:]_-]\|#{[^}]*}\)\+" contained contains=scssInterpolation
