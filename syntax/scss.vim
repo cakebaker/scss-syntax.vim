@@ -95,7 +95,8 @@ syn keyword scssNestedProperty contained break spacing wrap nextgroup=scssAttrib
 
 syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFunction,scssVariable containedin=cssString.*,cssURL,scssFunction
 
-syn region scssFunction contained matchgroup=scssFunctionName start="\<\([[:alnum:]-]\)\+\s*(" end=")" oneline keepend
+" ignores the url() function so it can be handled by css.vim
+syn region scssFunction contained matchgroup=scssFunctionName start="\<\(url(\)\@!\([[:alnum:]-]\)\+\s*(" end=")" oneline keepend
 syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=cssString.*,cssValue.*,scssVariable
 
 syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction,cssMediaType
