@@ -26,7 +26,7 @@ syn keyword cssFontProp font
 syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=TOP containedin=cssMediaBlock
 
 syn match scssProperty "\%([[:alnum:]-]\)\+\s*:\@=" contains=css.*Prop,cssVendor containedin=cssMediaBlock,scssDefinition nextgroup=scssAttribute,scssAttributeWithNestedDefinition
-syn match scssAttribute ":[^;]*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssFunction,scssInterpolation,scssVariable containedin=scssProperty
+syn match scssAttribute ":[^;]*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssFunction,scssInterpolation,scssVariable
 
 syn match scssAttributeWithNestedDefinition ": [^#]*{\@=" nextgroup=scssNestedDefinition contains=cssValue.*,scssVariable
 syn region scssNestedDefinition matchgroup=cssBraces start="{" end="}" contained contains=cssComment,scssComment,scssProperty,scssNestedProperty
