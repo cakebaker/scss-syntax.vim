@@ -1,6 +1,8 @@
 " Vim syntax file
-" Language: SCSS (Sassy CSS)
-" Author: Daniel Hofstetter (daniel.hofstetter@42dh.com)
+" Language:    SCSS (Sassy CSS)
+" Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
+" URL:         https://github.com/cakebaker/scss-syntax.vim
+" Last Change: 2013-12-26
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
