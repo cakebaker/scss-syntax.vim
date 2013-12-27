@@ -16,21 +16,25 @@ endif
 runtime! syntax/css.vim
 runtime! syntax/css/*.vim
 
+" adding dash to the characters which can appear inside words
+set iskeyword+=-
+
 syn case ignore
 
 " XXX fix for #20, can be removed once the patch is in vim's css.vim
 syn match cssSpecialCharQQ +\\\\\|\\"+ contained
 syn match cssSpecialCharQ +\\\\\|\\'+ contained
 
-" XXX redefining font keyword to avoid it being displayed as deprecated
-syn keyword cssFontProp font
+syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=cssMedia,scssComment,scssDefinition,scssProperty,scssSelector,scssVariable,scssImport,scssExtend,scssInclude,@scssControl,scssWarn containedin=cssMediaBlock
 
-syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=TOP containedin=cssMediaBlock
+syn match scssSelector "^\s*\zs\([^:@]\|:[^ ]\)\+{\@=" contained contains=@scssSelectors
+syn match scssSelector "^\s*\zs\([^:@{]\|:[^ ]\)\+\_$" contained contains=@scssSelectors
+syn cluster scssSelectors contains=cssTagName,cssPseudoClass,cssAttributeSelector,scssSelectorChar,scssAmpersand,scssInterpolation
 
-syn match scssProperty "\%([[:alnum:]-]\)\+\s*:\@=" contains=css.*Prop,cssVendor containedin=cssMediaBlock,scssDefinition nextgroup=scssAttribute,scssAttributeWithNestedDefinition
-syn match scssAttribute ":[^;]*;" contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssFunction,scssInterpolation,scssVariable
+syn match scssProperty "\([[:alnum:]-]\)\+\s*\(: \)\@=" contained contains=css.*Prop,cssVendor containedin=cssMediaBlock nextgroup=scssAttribute,scssAttributeWithNestedDefinition
+syn match scssAttribute ":[^;]*;" contained contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssFunction,scssInterpolation,scssVariable
 
-syn match scssAttributeWithNestedDefinition ": [^#]*{\@=" nextgroup=scssNestedDefinition contains=cssValue.*,scssVariable
+syn match scssAttributeWithNestedDefinition ": [^#]*{\@=" nextgroup=scssNestedDefinition contained contains=cssValue.*,scssVariable
 syn region scssNestedDefinition matchgroup=cssBraces start="{" end="}" contained contains=cssComment,scssComment,scssProperty,scssNestedProperty
 
 " CSS properties from https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
