@@ -16,9 +16,6 @@ endif
 runtime! syntax/css.vim
 runtime! syntax/css/*.vim
 
-" adding dash to the characters which can appear inside words
-set iskeyword+=-
-
 syn case ignore
 
 " XXX fix for #20, can be removed once the patch is in vim's css.vim
