@@ -668,6 +668,12 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   }
 }
 
+.container { // issue #33, multiline comments are not recognized as comments
+  /*height: auto !important;
+  min-height: 100%;*/
+  background: #fff;
+}
+
 div {
   height: 10px;
 }
