@@ -674,6 +674,10 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   background: #fff;
 }
 
+.button { // issue #34, functions as params should be recognized as functions
+  background-image: -webkit-linear-gradient(top, bottom, from(#933), to(#944));
+}
+
 div {
   height: 10px;
 }
