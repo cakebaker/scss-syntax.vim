@@ -678,6 +678,35 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   background-image: -webkit-linear-gradient(top, bottom, from(#933), to(#944));
 }
 
+.class { // issue #35 a) media block is not recognized
+  @media screen and (min-width: em(480)) {
+    a {
+      @extend .clearfix;
+    }
+  }
+}
+
+.class {
+  div {
+    a {
+      @extend .clearfix;
+    }
+  }
+}
+
+@media screen and (min-width: em(480)) {
+  a {
+    @extend .clearfix;
+  }
+}
+
+.class { // issue #35 b) @extend & @include are not recognized inside media block
+  @media screen and (min-width: em(480)) {
+    @extend .clearfix;
+    @include header-text;
+  }
+}
+
 div {
   height: 10px;
 }
