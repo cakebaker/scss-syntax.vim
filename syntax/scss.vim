@@ -110,7 +110,7 @@ syn keyword scssNull null contained;
 syn match scssMixin "^@mixin" nextgroup=scssMixinName skipwhite
 syn match scssMixinName "[[:alnum:]_-]\+" contained nextgroup=scssDefinition,scssMixinParams
 syn region scssMixinParams contained contains=cssColor,cssValue.*,cssString.*,scssVariable,scssFunction start="(" end=")" oneline extend
-syn match scssInclude "@include" nextgroup=scssMixinName skipwhite
+syn match scssInclude "@include" nextgroup=scssMixinName skipwhite containedin=cssMediaBlock
 syn match scssContent "@content" contained containedin=scssDefinition
 
 syn match scssFunctionDefinition "^@function" nextgroup=scssFunctionName skipwhite
@@ -118,7 +118,7 @@ syn match scssFunctionName "[[:alnum:]_-]\+" contained nextgroup=scssFunctionPar
 syn region scssFunctionParams contained start="(" end=")" nextgroup=scssFunctionBody contains=scssVariable skipwhite
 syn region scssFunctionBody contained matchgroup=cssBraces start="{" end="}" contains=cssString.*,cssValue.*,scssVariable,scssReturn,scssFunction
 syn match scssReturn "@return" contained
-syn match scssExtend "@extend" nextgroup=scssExtendedSelector skipwhite
+syn match scssExtend "@extend" nextgroup=scssExtendedSelector skipwhite containedin=cssMediaBlock
 syn match scssExtendedSelector "[^ ;]\+" contained contains=cssTagName,cssPseudoClass,scssSelectorChar nextgroup=scssOptional skipwhite
 syn match scssOptional "!optional" contained
 syn match scssImport "@import" nextgroup=scssImportList
