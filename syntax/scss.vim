@@ -145,7 +145,7 @@ syn region scssEach matchgroup=scssEachKeyword start="@each" end="in" contains=s
 syn match scssList "[^{]\+" contained contains=scssFunction,scssVariable
 syn cluster scssControl contains=scssIf,scssElse,scssWhile,scssFor,scssEach
 
-syn match scssComment "//.*$" contains=@Spell
+syn match scssComment "//.*$" contains=@Spell containedin=cssMediaBlock
 syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=cssComment,scssComment
 
 hi def link scssNestedProperty cssProp

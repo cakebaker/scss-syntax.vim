@@ -695,6 +695,7 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
 }
 
 @media screen and (min-width: em(480)) {
+  // issue #35 c) comment inside media block is not recognized
   a {
     @extend .clearfix;
   }
