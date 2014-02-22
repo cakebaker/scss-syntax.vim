@@ -686,11 +686,10 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   }
 }
 
-.class {
-  div {
-    a {
-      @extend .clearfix;
-    }
+.class { // issue #35 b) @extend & @include are not recognized inside media block
+  @media screen and (min-width: em(480)) {
+    @extend .clearfix;
+    @include header-text;
   }
 }
 
@@ -698,13 +697,6 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   // issue #35 c) comment inside media block is not recognized
   a {
     @extend .clearfix;
-  }
-}
-
-.class { // issue #35 b) @extend & @include are not recognized inside media block
-  @media screen and (min-width: em(480)) {
-    @extend .clearfix;
-    @include header-text;
   }
 }
 
