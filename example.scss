@@ -700,6 +700,17 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   }
 }
 
+.foo { // issue #35 d) the two &:nth-child are not highlighted in the same way
+  &:nth-child(3n) {
+    @include bar(#000);
+  }
+  @media screen and (max-width: em(1024)) {
+    &:nth-child(2n) {
+      @include foobar;
+    }
+  }
+}
+
 .gradient { // issue #36, params are not consistently highlighted
   background-image: -webkit-gradient(linear, left top, left bottom, from(#444444), to(#999999));
   background-image:  -webkit-gradien(linear, left top, right bottom);

@@ -127,7 +127,7 @@ syn match scssImportList "[^;]\+" contained contains=cssString.*,cssMediaType,cs
 syn match scssSelectorChar "\(#\|\.\|%\)\([[:alnum:]_-]\|#{.*}\)\@=" nextgroup=scssSelectorName containedin=cssMediaBlock
 syn match scssSelectorName "\([[:alnum:]_-]\|#{[^}]*}\)\+" contained contains=scssInterpolation
 
-syn match scssAmpersand "&" nextgroup=cssPseudoClass
+syn match scssAmpersand "&" nextgroup=cssPseudoClass containedin=cssMediaBlock
 
 syn match scssDebug "@debug" nextgroup=scssOutput
 syn match scssWarn "@warn" nextgroup=scssOutput
