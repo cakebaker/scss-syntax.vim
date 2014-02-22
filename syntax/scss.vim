@@ -2,7 +2,7 @@
 " Language:    SCSS (Sassy CSS)
 " Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
 " URL:         https://github.com/cakebaker/scss-syntax.vim
-" Last Change: 2014-02-20
+" Last Change: 2014-02-22
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
@@ -96,7 +96,7 @@ syn keyword scssNestedProperty contained bidi range nextgroup=scssAttribute
 " word
 syn keyword scssNestedProperty contained break spacing wrap nextgroup=scssAttribute
 
-syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFunction,scssVariable containedin=cssString.*,cssURL,scssFunction
+syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFunction,scssVariable containedin=cssInclude,cssString.*,cssURL,scssFunction
 
 " ignores the url() function so it can be handled by css.vim
 syn region scssFunction contained matchgroup=scssFunctionName start="\<\(url(\)\@!\([[:alnum:]-]\)\+\s*(" end=")" oneline keepend extend containedin=cssMediaType
