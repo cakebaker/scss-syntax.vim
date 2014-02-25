@@ -722,6 +722,10 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   background-image: -webkit-linear-gradient(top, #444444, #999999);
 }
 
+.button { // issue #37, only "border" is highlighted in Vim 7.3
+  border-radius: 5px;
+}
+
 div {
   height: 10px;
 }

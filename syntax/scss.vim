@@ -2,7 +2,7 @@
 " Language:    SCSS (Sassy CSS)
 " Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
 " URL:         https://github.com/cakebaker/scss-syntax.vim
-" Last Change: 2014-02-22
+" Last Change: 2014-02-25
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
@@ -21,6 +21,17 @@ syn case ignore
 " XXX fix for #20, can be removed once the patch is in vim's css.vim
 syn match cssSpecialCharQQ +\\\\\|\\"+ contained
 syn match cssSpecialCharQ +\\\\\|\\'+ contained
+
+" XXX fix for #37
+if v:version < 704
+  " replace the definition of cssBoxProp with the one from Vim 7.4 to prevent
+  " highlighting issues
+  syn clear cssBoxProp
+  syn match cssBoxProp contained "\<padding\(-\(top\|right\|bottom\|left\)\)\=\>"
+  syn match cssBoxProp contained "\<margin\(-\(top\|right\|bottom\|left\)\)\=\>"
+  syn match cssBoxProp contained "\<overflow\(-\(x\|y\|style\)\)\=\>"
+  syn match cssBoxProp contained "\<rotation\(-point\)\=\>"
+endif
 
 syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=cssComment,cssInclude,scssComment,scssDefinition,scssProperty,scssSelector,scssVariable,scssImport,scssExtend,scssInclude,@scssControl,scssWarn containedin=cssMediaBlock
 
