@@ -35,7 +35,7 @@ endif
 
 syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=cssComment,cssInclude,scssComment,scssDefinition,scssProperty,scssSelector,scssVariable,scssImport,scssExtend,scssInclude,@scssControl,scssWarn containedin=cssMediaBlock
 
-syn match scssSelector "^\s*\zs\([^:@]\|:[^ ]\)\+{\@=" contained contains=@scssSelectors
+syn match scssSelector "^\zs\([^:@]\|:[^ ]\)\+{\@=" contained contains=@scssSelectors
 syn match scssSelector "^\s*\zs\([^:@{]\|:[^ ]\)\+\_$" contained contains=@scssSelectors
 syn cluster scssSelectors contains=cssTagName,cssPseudoClass,cssAttributeSelector,scssSelectorChar,scssAmpersand,scssInterpolation
 
