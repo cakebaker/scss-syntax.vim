@@ -4,10 +4,6 @@
   color: #00ff00;
   width: 97%;
 
-  #hello {
-    background-color: blue;
-  }
-
   .redbox {
     background-color: #ff0000;
     color: #000000;
@@ -40,6 +36,11 @@ a {
     font-weight: bold;
     &:hover { color: red; }
   }
+}
+
+#main {
+  color: black;
+  &-sidebar { border: 1px solid; }
 }
 
 // Nested Properties
@@ -99,6 +100,10 @@ $width: 5em; // another comment
 
 @include firefox-message(".header");
 
+// Maps
+
+$map: (key1: value1, key2: value2, key3: value3);
+
 // Number Operations
 
 p {
@@ -109,6 +114,7 @@ p {
   font: 10px/8px;
   $width: 1000px;
   width: $width/2;
+  width: round(1.5)/2;
   height: (500px/2);
   margin-left: 5px + 8px/2px;
 }
@@ -403,6 +409,28 @@ a.important {
   }
 }
 
+// @at-root
+
+.parent {
+  @at-root .child {}
+}
+
+.parent {
+  @at-root {
+    .child1 {}
+    .child2 {}
+  }
+}
+
+@media print {
+  .page {
+    width: 8in;
+    @at-root (without: media) {
+      color: red;
+    }
+  }
+}
+
 // @debug
 
 @debug 10em + 12em;
@@ -457,6 +485,22 @@ p {
 @each $animal in puma, sea-slug, egret, salamander {
   .#{$animal}-icon {
     background-image: url('/images/#{$animal}.png');
+  }
+}
+
+@each $animal, $color, $cursor in (puma, black, default),
+                                  (sea-slug, blue, pointer),
+                                  (egret, white, move) {
+  .#{$animal}-icon {
+    background-image: url('/images/#{$animal}.png');
+    border: 2px solid $color;
+    cursor: $cursor;
+  }
+}
+
+@each $header, $size in (h1: 2em, h2: 1.5em, h3: 1.2em) {
+  #{$header} {
+    font-size: $size;
   }
 }
 
@@ -564,6 +608,11 @@ h1 { @include sexy-border($color: blue, $width: 2in); }
 $values: #ff0000, #00ff00, #0000ff;
 .primary {
   @include colors($values...);
+}
+
+$value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
+.secondary {
+  @include colors($value-map...);
 }
 
 @mixin wrapped-stylish-mixin($args...) {
