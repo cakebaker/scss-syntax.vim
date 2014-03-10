@@ -115,7 +115,7 @@ syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction 
 
 syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction,cssMediaType nextgroup=scssVariableAssignment skipwhite
 syn match scssVariableAssignment ":" contained nextgroup=scssVariableValue skipwhite
-syn match scssVariableValue "[^;)]\+[;)]\@=" contained contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssDefault,scssFunction,scssInterpolation,scssNull,scssVariable
+syn match scssVariableValue "[^;)]\+[;)]\@=" contained contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssDefault,scssFunction,scssInterpolation,scssNull,scssVariable,scssMap
 syn keyword scssNull null contained;
 
 syn match scssMixin "^@mixin" nextgroup=scssMixinName skipwhite
@@ -155,6 +155,10 @@ syn match scssForKeyword "@for\|from\|to\|through" contained
 syn region scssEach matchgroup=scssEachKeyword start="@each" end="in" contains=scssVariable nextgroup=scssList
 syn match scssList "[^{]\+" contained contains=scssFunction,scssVariable
 syn cluster scssControl contains=scssIf,scssElse,scssWhile,scssFor,scssEach
+
+syn region scssMap matchgroup=cssBraces start=" \zs(" end=")" contains=scssMapKey,scssMapValue
+syn match scssMapKey "[^: ]\+\ze[:]" contained contains=css.*Attr,cssString.*,scssVariable
+syn match scssMapValue "[^, ]\+\ze[,)]" contained contains=cssColor,css.*Prop,cssString.*,scssVariable
 
 syn match scssComment "//.*$" contains=@Spell containedin=cssMediaBlock
 syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=cssComment,scssComment
