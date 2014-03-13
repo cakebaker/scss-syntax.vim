@@ -156,7 +156,7 @@ syn region scssEach matchgroup=scssEachKeyword start="@each" end="in" contains=s
 syn match scssList "[^{]\+" contained contains=scssFunction,scssVariable
 syn cluster scssControl contains=scssIf,scssElse,scssWhile,scssFor,scssEach
 
-syn region scssMap matchgroup=cssBraces start=" \zs(" end=")" contains=scssMapKey,scssMapValue
+syn region scssMap matchgroup=cssBraces start=" \zs(\ze.\+:" end=")" contains=scssMapKey,scssMapValue
 syn match scssMapKey "[^: ]\+\ze[:]" contained contains=css.*Attr,cssString.*,scssVariable
 syn match scssMapValue "[^, ]\+\ze[,)]" contained contains=cssColor,css.*Prop,cssString.*,scssVariable
 
