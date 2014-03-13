@@ -152,8 +152,8 @@ syn match scssElse "@else\(\s*\({\|$\)\)\@="
 syn match scssWhile "@while" nextgroup=scssCondition
 syn match scssFor "@for\s\+.*from\s\+.*\(to\|through\)\s\+[^{ ]\+" contains=cssValueNumber,scssFunction,scssVariable,scssForKeyword
 syn match scssForKeyword "@for\|from\|to\|through" contained
-syn region scssEach matchgroup=scssEachKeyword start="@each" end="in" contains=scssVariable nextgroup=scssList
-syn match scssList "[^{]\+" contained contains=scssFunction,scssVariable
+syn region scssEach matchgroup=scssEachKeyword start="@each" end="in" contains=scssVariable nextgroup=scssCollection
+syn region scssCollection start=" " end="\ze{" contained contains=scssFunction,scssMap,scssVariable
 syn cluster scssControl contains=scssIf,scssElse,scssWhile,scssFor,scssEach
 
 syn region scssMap matchgroup=cssBraces start=" \zs(\ze.\+:" end=")" contains=scssMapKey,scssMapValue
