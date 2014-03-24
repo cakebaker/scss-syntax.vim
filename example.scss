@@ -775,6 +775,11 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   border-radius: 5px;
 }
 
+.ding { // issue #40, properties without space after them are not highlighted
+  font-size:12px;
+  color:red;
+}
+
 div {
   height: 10px;
 }
