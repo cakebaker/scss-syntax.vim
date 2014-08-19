@@ -115,8 +115,9 @@ syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction 
 
 syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction,cssMediaType nextgroup=scssVariableAssignment skipwhite
 syn match scssVariableAssignment ":" contained nextgroup=scssVariableValue skipwhite
-syn match scssVariableValue "[^;)]\+[;)]\@=" contained contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssDefault,scssFunction,scssInterpolation,scssNull,scssVariable,scssMap
-syn keyword scssNull null contained;
+syn match scssVariableValue "[^;)]\+[;)]\@=" contained contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssDefault,scssFunction,scssInterpolation,scssNull,scssVariable,scssMap,scssGlobal
+syn match scssGlobal "!global" contained
+syn keyword scssNull null contained
 
 syn match scssMixin "^@mixin" nextgroup=scssMixinName skipwhite
 syn match scssMixinName "[[:alnum:]_-]\+" contained nextgroup=scssDefinition,scssMixinParams
@@ -168,6 +169,7 @@ syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=cssComme
 
 hi def link scssNestedProperty cssProp
 hi def link scssVariable  Identifier
+hi def link scssGlobal    Special
 hi def link scssNull      Constant
 hi def link scssMixin     PreProc
 hi def link scssMixinName Function
