@@ -219,7 +219,7 @@ p {
     &:hover {
       color: red;
     }
-  } else {
+  } @else {
     a {
       color: red;
     }
