@@ -34,3 +34,13 @@ au BufRead,BufNewFile *.scss set filetype=scss.css
 ```
 
 Please be aware that this setting can cause problems with other plugins as mentioned in [#41](https://github.com/cakebaker/scss-syntax.vim/pull/41).
+
+### Function names starting with a keyword
+
+Function names starting with a keyword (e.g. `baseline-unit()`) are not highlighted correctly by default. It can be fixed by adding the following line to your `~/.vimrc` file:
+
+```vim
+autocmd FileType scss set iskeyword+=-
+```
+
+Please be aware that this setting also affects the behavior of the motion keys.
