@@ -72,17 +72,9 @@ body { color: black; }
 // since they use the single-line comment syntax.
 a { color: green; }
 
-a {
-  color: green; // a comment after an assignment
-}
-
-.foo {
-  color: green; // issue #3: a comment ending with {}
-}
-
 // Variables: $
 
-$width: 5em; // another comment
+$width: 5em;
 
 #main {
   width: $width;
@@ -114,16 +106,12 @@ $map: (key1: value1, key2: value2, key3: value3);
 // Number Operations
 
 p {
-  width: 1in + 8pt;
-}
-
-p {
-  font: 10px/8px;
+  font: 10px/8px;             // Plain CSS, no division
   $width: 1000px;
-  width: $width/2;
-  width: round(1.5)/2;
-  height: (500px/2);
-  margin-left: 5px + 8px/2px;
+  width: $width/2;            // Uses a variable, does division
+  width: round(1.5)/2;        // Uses a function, does division
+  height: (500px/2);          // Uses parentheses, does division
+  margin-left: 5px + 8px/2px; // Uses +, does division
 }
 
 p {
@@ -445,6 +433,7 @@ a.important {
     .child1 {}
     .child2 {}
   }
+  .step-child {}
 }
 
 @media print {
@@ -707,12 +696,16 @@ $gutter-width: 10px;
 #sidebar { width: grid-width(5); }
 #sidebar { width: grid-width($n: 5); }
 
+// Styles which were not highlighted correctly in the past
+
 // TODO: todo should be highlighted, ticket #21
 /* TODO: same here */
 
 @import url(http://fonts.googleapis.com/css?family=Vollkorn);  // the // in the url shouldn't be highlighted as comment, ticket #24
 
-// Styles which were not highlighted correctly in the past
+.foo {
+  color: green; // issue #3: a comment ending with {}
+}
 
 // Attribute selectors should get highlighted for parent references.
 input {
