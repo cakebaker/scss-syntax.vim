@@ -107,7 +107,7 @@ syn keyword scssNestedProperty contained bidi range nextgroup=scssAttribute
 " word
 syn keyword scssNestedProperty contained break spacing wrap nextgroup=scssAttribute
 
-syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFunction,scssVariable containedin=cssInclude,cssString.*,cssURL,scssFunction
+syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFunction,scssVariable containedin=cssComment,cssInclude,cssString.*,cssURL,scssFunction
 
 " ignores the url() function so it can be handled by css.vim
 syn region scssFunction contained matchgroup=scssFunctionName start="\<\(url(\)\@!\([[:alnum:]-]\)\+\s*(" end=")" oneline keepend extend containedin=cssMediaType
