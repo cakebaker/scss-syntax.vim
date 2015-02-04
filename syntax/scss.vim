@@ -33,7 +33,7 @@ if v:version < 704
   syn match cssBoxProp contained "\<rotation\(-point\)\=\>"
 endif
 
-syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=cssComment,cssInclude,scssAtRootStatement,scssComment,scssDefinition,scssProperty,scssSelector,scssVariable,scssImport,scssExtend,scssInclude,@scssControl,scssWarn,scssError containedin=cssFontDescriptorBlock,cssMediaBlock fold
+syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=cssComment,cssInclude,cssFontDescriptor,scssAtRootStatement,scssComment,scssDefinition,scssProperty,scssSelector,scssVariable,scssImport,scssExtend,scssInclude,@scssControl,scssWarn,scssError containedin=cssFontDescriptorBlock,cssMediaBlock fold
 
 syn match scssSelector "^\zs\([^:@]\|:[^ ]\)\+{\@=" contained contains=@scssSelectors
 syn match scssSelector "^\s*\zs\([^:@{]\|:[^ ]\)\+\_$" contained contains=@scssSelectors
