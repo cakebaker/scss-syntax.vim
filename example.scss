@@ -833,6 +833,26 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   }
 }
 
+@function grid-width($n) {  // issue #48: various elements are not highlighted inside @function (plus this comment is not recognized as comment)
+  @debug 10em + 12em;
+  @warn "Warning";
+  @error "Error";
+
+  @if unitless($n) {
+  }
+
+  $a: ('a', 'b');
+
+  @each $b in $a {
+  }
+
+  @for $i from 1 through 3 {
+  }
+
+  @while $n > 0 {
+  }
+}
+
 div {
   height: 10px;
 }

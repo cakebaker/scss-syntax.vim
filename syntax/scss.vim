@@ -131,7 +131,7 @@ syn match scssContent "@content" contained containedin=scssDefinition
 syn match scssFunctionDefinition "^@function" nextgroup=scssFunctionName skipwhite
 syn match scssFunctionName "[[:alnum:]_-]\+" contained nextgroup=scssFunctionParams
 syn region scssFunctionParams contained start="(" end=")" nextgroup=scssFunctionBody contains=scssVariable skipwhite
-syn region scssFunctionBody contained matchgroup=cssBraces start="{" end="}" contains=cssString.*,cssValue.*,scssVariable,scssReturn,scssFunction fold
+syn region scssFunctionBody contained matchgroup=cssBraces start="{" end="}" contains=cssString.*,cssValue.*,@scssControl,scssComment,scssVariable,scssReturn,scssFunction,scssDebug,scssError,scssWarn,scssDefinition fold
 syn match scssReturn "@return" contained
 syn match scssExtend "@extend" nextgroup=scssExtendedSelector skipwhite containedin=cssMediaBlock
 syn match scssExtendedSelector "[^ ;]\+" contained contains=cssTagName,cssPseudoClass,scssSelectorChar nextgroup=scssOptional skipwhite
