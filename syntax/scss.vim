@@ -2,7 +2,7 @@
 " Language:    SCSS (Sassy CSS)
 " Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
 " URL:         https://github.com/cakebaker/scss-syntax.vim
-" Last Change: 2015-02-05
+" Last Change: 2015-02-14
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
@@ -34,7 +34,7 @@ if v:version < 704
 endif
 
 " override @font-face blocks to allow scss elements inside
-syn region cssFontDescriptorBlock contained transparent matchgroup=cssBraces start="{" end="}" contains=cssComment,cssError,cssUnicodeEscape,cssFontProp,cssFontAttr,cssCommonAttr,cssStringQ,cssStringQQ,cssFontDescriptorProp,cssValue.*,cssFontDescriptorFunction,cssUnicodeRange,cssFontDescriptorAttr,scssComment,scssDefinition,scssFunction,scssVariable,@scssControl
+syn region cssFontDescriptorBlock contained transparent matchgroup=cssBraces start="{" end="}" contains=cssComment,cssError,cssUnicodeEscape,cssFontProp,cssFontAttr,cssCommonAttr,cssStringQ,cssStringQQ,cssFontDescriptorProp,cssValue.*,cssFontDescriptorFunction,cssUnicodeRange,cssFontDescriptorAttr,scssComment,scssDefinition,scssFunction,scssVariable,@scssControl,scssDebug,scssError,scssWarn
 
 syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=cssComment,cssInclude,cssFontDescriptor,scssAtRootStatement,scssComment,scssDefinition,scssProperty,scssSelector,scssVariable,scssImport,scssExtend,scssInclude,@scssControl,scssWarn,scssError containedin=cssMediaBlock fold
 

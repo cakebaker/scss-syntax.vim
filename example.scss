@@ -818,6 +818,10 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
 
   @each $b in $a {
   }
+
+  @debug 10em + 12em;
+  @warn "Warning";
+  @error "Error";
 }
 
 @mixin generate-fontfaces($ffs-info) {  // issue #47 b) "@font-face" is not highlighted
