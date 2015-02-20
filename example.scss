@@ -853,6 +853,15 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   }
 }
 
+@function grid-width($n) {  // issue #49: @return and @debug are not highlighted if nested
+  @if unitless($n) {
+    @debug $n;
+    @return $n;
+  }
+  @debug $n;
+  @return $n;
+}
+
 div {
   height: 10px;
 }
