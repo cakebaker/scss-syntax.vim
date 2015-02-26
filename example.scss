@@ -868,6 +868,10 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
                        $direction: null, $fill: null, $visibility: null) {
 }
 
+// issue #50 b): null is not recognized as function parameter
+@include setup-animation($name:   animation-value($part, "name"),
+                         $count:  animation-value($part, "count", null));
+
 div {
   height: 10px;
 }

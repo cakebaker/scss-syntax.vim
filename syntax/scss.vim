@@ -114,7 +114,7 @@ syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" en
 
 " ignores the url() function so it can be handled by css.vim
 syn region scssFunction contained matchgroup=scssFunctionName start="\<\(url(\)\@!\([[:alnum:]-]\)\+\s*(" end=")" oneline keepend extend containedin=cssMediaType
-syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=css.*Attr,cssColor,cssString.*,cssValue.*,scssFunction,scssVariable
+syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=css.*Attr,cssColor,cssString.*,cssValue.*,scssFunction,scssNull,scssVariable
 
 syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction,cssMediaType nextgroup=scssVariableAssignment skipwhite
 syn match scssVariableAssignment ":" contained nextgroup=scssVariableValue skipwhite
