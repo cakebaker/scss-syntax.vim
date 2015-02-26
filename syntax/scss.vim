@@ -2,7 +2,7 @@
 " Language:    SCSS (Sassy CSS)
 " Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
 " URL:         https://github.com/cakebaker/scss-syntax.vim
-" Last Change: 2015-02-14
+" Last Change: 2015-02-26
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
@@ -124,7 +124,7 @@ syn keyword scssNull null contained
 
 syn match scssMixin "^@mixin" nextgroup=scssMixinName skipwhite
 syn match scssMixinName "[[:alnum:]_-]\+" contained nextgroup=scssDefinition,scssMixinParams
-syn region scssMixinParams contained contains=css.*Attr,cssColor,cssValue.*,cssString.*,scssVariable,scssFunction start="(" end=")" oneline extend
+syn region scssMixinParams contained contains=css.*Attr,cssColor,cssValue.*,cssString.*,scssVariable,scssFunction start="(" end=")" extend
 syn match scssInclude "@include" nextgroup=scssMixinName skipwhite containedin=cssMediaBlock
 syn match scssContent "@content" contained containedin=scssDefinition
 

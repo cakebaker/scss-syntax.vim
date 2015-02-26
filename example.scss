@@ -862,6 +862,12 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   @return $n;
 }
 
+// issue #50 a): not all null values are recognized
+@mixin setup-animation($name: null, $count: null, $duration: null, $delay: null,
+                       $function: null,
+                       $direction: null, $fill: null, $visibility: null) {
+}
+
 div {
   height: 10px;
 }
