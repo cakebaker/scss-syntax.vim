@@ -872,6 +872,14 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
 @include setup-animation($name:   animation-value($part, "name"),
                          $count:  animation-value($part, "count", null));
 
+// issue #50 c): function is not highlighted if nested
+@function animation-value($n) {
+  @if $n {
+    @return safe-map-get($n);
+  }
+  @return safe-map-get($n);
+}
+
 div {
   height: 10px;
 }
