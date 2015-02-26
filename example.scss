@@ -880,6 +880,15 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   @return safe-map-get($n);
 }
 
+// issue #52: ")" inside a string param is mistaken as the end of the function
+@mixin filter($filter-type, $filter-amount) {
+  -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
+  -moz-filter: $filter-type+unquote('(#{$filter-amount})');
+  -ms-filter: $filter-type+unquote('(#{$filter-amount})');
+  -o-filter: $filter-type+unquote('(#{$filter-amount})');
+  filter: $filter-type+unquote('(#{$filter-amount})');
+}
+
 div {
   height: 10px;
 }
