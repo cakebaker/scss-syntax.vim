@@ -889,6 +889,9 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   filter: $filter-type+unquote('(#{$filter-amount})');
 }
 
+$x: fnA(fnB("b"), "a");
+$x: fnA(fnB('b'), 'a');
+
 div {
   height: 10px;
 }
