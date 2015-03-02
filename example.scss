@@ -892,6 +892,14 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
 $x: fnA(fnB("b"), "a");
 $x: fnA(fnB('b'), 'a');
 
+// issue #53 a) function is not recognized when params are on multiple lines
+$keyframe-info: map-merge($keyframe-info, (
+  'offset-x': $x,
+  'offset-y': $y,
+));
+
+$keyframe-info: map-merge($keyframe-info, ('offset-x': $x, 'offset-y': $y));
+
 div {
   height: 10px;
 }
