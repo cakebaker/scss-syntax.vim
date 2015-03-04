@@ -2,7 +2,7 @@
 " Language:    SCSS (Sassy CSS)
 " Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
 " URL:         https://github.com/cakebaker/scss-syntax.vim
-" Last Change: 2015-03-02
+" Last Change: 2015-03-04
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
@@ -114,13 +114,15 @@ syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" en
 
 " ignores the url() function so it can be handled by css.vim
 syn region scssFunction contained matchgroup=scssFunctionName start="\<\(url(\)\@!\([[:alnum:]-]\)\+\s*(" skip=+\('[^']*'\)\|\("[^"]*"\)+ end=")" keepend extend containedin=cssMediaType
-syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=css.*Attr,cssColor,cssString.*,cssValue.*,scssFunction,scssNull,scssVariable
+syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=css.*Attr,cssColor,cssString.*,cssValue.*,scssBoolean,scssFunction,scssNull,scssVariable
 
 syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction,cssMediaType nextgroup=scssVariableAssignment skipwhite
 syn match scssVariableAssignment ":" contained nextgroup=scssVariableValue skipwhite
-syn region scssVariableValue start="" end="\ze[;)]" contained contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssDefault,scssFunction,scssInterpolation,scssNull,scssVariable,scssMap,scssGlobal,scssAmpersand
+syn region scssVariableValue start="" end="\ze[;)]" contained contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssBoolean,scssDefault,scssFunction,scssInterpolation,scssNull,scssVariable,scssMap,scssGlobal,scssAmpersand
 syn match scssGlobal "!global" contained
+
 syn keyword scssNull null contained
+syn keyword scssBoolean true false contained
 
 syn match scssMixin "^@mixin" nextgroup=scssMixinName skipwhite
 syn match scssMixinName "[[:alnum:]_-]\+" contained nextgroup=scssDefinition,scssMixinParams
@@ -151,7 +153,7 @@ syn match scssOutput "[^;]\+" contained contains=cssValue.*,cssString.*,scssFunc
 syn match scssDefault "!default" contained
 
 syn match scssIf "@\=if" nextgroup=scssCondition
-syn match scssCondition "[^{]\+" contained contains=cssValue.*,cssString.*,scssFunction,scssNull,scssVariable,scssAmpersand
+syn match scssCondition "[^{]\+" contained contains=cssValue.*,cssString.*,scssBoolean,scssFunction,scssNull,scssVariable,scssAmpersand
 syn match scssElse "@else" nextgroup=scssIf
 syn match scssElse "@else\(\s*\({\|$\)\)\@="
 syn match scssWhile "@while" nextgroup=scssCondition
@@ -175,6 +177,7 @@ hi def link scssNestedProperty cssProp
 hi def link scssVariable  Identifier
 hi def link scssGlobal    Special
 hi def link scssNull      Constant
+hi def link scssBoolean   Constant
 hi def link scssMixin     PreProc
 hi def link scssMixinName Function
 hi def link scssContent   PreProc
