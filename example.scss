@@ -905,6 +905,11 @@ $a: true;
 $b: false;
 $c: (key1: true, key2: false, key3: null);
 
+// issue #56: variable inside media block is not highlighted correctly
+@media #{small-only()} {
+  $padding-horiz: 0.4rem;
+}
+
 div {
   height: 10px;
 }
