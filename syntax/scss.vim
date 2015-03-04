@@ -165,7 +165,7 @@ syn cluster scssControl contains=scssIf,scssElse,scssWhile,scssFor,scssEach
 
 syn region scssMap matchgroup=cssBraces start=" \zs(\ze.\+:" end=")" contains=scssMapKey,scssMapValue
 syn match scssMapKey "[^: ]\+\ze[:]" contained contains=css.*Attr,cssString.*,scssVariable
-syn match scssMapValue "[^, ]\+\ze[,)]" contained contains=cssColor,css.*Prop,cssString.*,scssVariable
+syn match scssMapValue "[^, ]\+\ze[,)]" contained contains=cssColor,css.*Prop,cssString.*,scssBoolean,scssNull,scssVariable
 
 syn region scssAtRootStatement start="@at-root" end="\ze{" contains=@scssSelectors,scssAtRoot
 syn match scssAtRoot "@at-root" contained
