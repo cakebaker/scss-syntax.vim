@@ -911,6 +911,13 @@ html > body.contacts {
   }
 }
 
+// issue #54 b) multiline selector is not recognized if there is a string interpolation
+@mixin apply-page-contacts($ns, $colors) {
+  html##{$ns} > body.contacts
+  > .parts {
+  }
+}
+
 // issue #56: variable inside media block is not highlighted correctly
 @media #{small-only()} {
   $padding-horiz: 0.4rem;
