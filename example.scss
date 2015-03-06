@@ -900,7 +900,13 @@ $keyframe-info: map-merge($keyframe-info, (
 
 $keyframe-info: map-merge($keyframe-info, ('offset-x': $x, 'offset-y': $y));
 
-// issue #53 b) boolean values are not recognized
+// issue #53 b) multiline map is not recognized
+$m: (
+  'offset-x': $x,
+  'offset-y': $y,
+);
+
+// issue #53 c) boolean values are not recognized
 $a: true;
 $b: false;
 $c: (key1: true, key2: false, key3: null);
