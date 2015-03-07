@@ -929,6 +929,9 @@ html > body.contacts {
   $padding-horiz: 0.4rem;
 }
 
+// function is not recognized in map
+$m: (key: fn());
+
 div {
   height: 10px;
 }
