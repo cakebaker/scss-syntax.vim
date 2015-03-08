@@ -911,6 +911,12 @@ $a: true;
 $b: false;
 $c: (key1: true, key2: false, key3: null);
 
+// issue #53 d) classes inside pseudo-selectors are not recognized
+html {
+  &:not(.animate-once) {
+  }
+}
+
 // issue #54 a) the highlighting of both ">" should be identical
 html > body.contacts {
   .content > .panel-wrp {
