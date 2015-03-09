@@ -941,6 +941,10 @@ $m: (key: fn());
 // map is not recognized as param
 $m: fn((key: value));
 
+// string with spaces is not recognized as map value
+$m: (key: "string");
+$m: (key: "string with spaces");
+
 div {
   height: 10px;
 }
