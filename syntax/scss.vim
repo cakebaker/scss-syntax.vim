@@ -2,7 +2,7 @@
 " Language:    SCSS (Sassy CSS)
 " Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
 " URL:         https://github.com/cakebaker/scss-syntax.vim
-" Last Change: 2015-03-08
+" Last Change: 2015-03-09
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
@@ -116,7 +116,7 @@ syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" en
 
 " ignores the url() function so it can be handled by css.vim
 syn region scssFunction contained matchgroup=scssFunctionName start="\<\(url(\)\@!\([[:alnum:]-]\)\+\s*(" skip=+\('[^']*'\)\|\("[^"]*"\)+ end=")" keepend extend containedin=cssMediaType
-syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=css.*Attr,cssColor,cssString.*,cssValue.*,scssBoolean,scssFunction,scssNull,scssVariable
+syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=css.*Attr,cssColor,cssString.*,cssValue.*,scssBoolean,scssFunction,scssMap,scssNull,scssVariable
 
 syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction,cssMediaBlock,cssMediaType nextgroup=scssVariableAssignment skipwhite
 syn match scssVariableAssignment ":" contained nextgroup=scssVariableValue skipwhite
@@ -165,7 +165,7 @@ syn region scssEach matchgroup=scssEachKeyword start="@each" end="in" contains=s
 syn region scssCollection start=" " end="\ze{" contained contains=scssFunction,scssMap,scssVariable
 syn cluster scssControl contains=scssIf,scssElse,scssWhile,scssFor,scssEach
 
-syn region scssMap matchgroup=cssBraces start=" \zs(\ze\(\s*$\|.\+:\)" end=")" contains=scssMapKey,scssMapValue
+syn region scssMap matchgroup=cssBraces start="(\ze\(\s*$\|.\+:\)" end=")" contains=scssMapKey,scssMapValue
 syn match scssMapKey "[^: ]\+\ze[:]" contained contains=css.*Attr,cssString.*,scssVariable
 syn match scssMapValue "[^, ]\+\ze[,)]" contained contains=cssColor,css.*Prop,cssString.*,scssBoolean,scssFunction,scssNull,scssVariable
 

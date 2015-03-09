@@ -938,6 +938,9 @@ html > body.contacts {
 // function is not recognized in map
 $m: (key: fn());
 
+// map is not recognized as param
+$m: fn((key: value));
+
 div {
   height: 10px;
 }
