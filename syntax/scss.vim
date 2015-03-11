@@ -2,7 +2,7 @@
 " Language:    SCSS (Sassy CSS)
 " Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
 " URL:         https://github.com/cakebaker/scss-syntax.vim
-" Last Change: 2015-03-10
+" Last Change: 2015-03-11
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
@@ -165,7 +165,7 @@ syn region scssEach matchgroup=scssEachKeyword start="@each" end="in" contains=s
 syn region scssCollection start=" " end="\ze{" contained contains=scssFunction,scssMap,scssVariable
 syn cluster scssControl contains=scssIf,scssElse,scssWhile,scssFor,scssEach
 
-syn region scssMap matchgroup=cssBraces start="(\ze\(\s*$\|.\+:\)" end=")" contains=scssMapKey
+syn region scssMap matchgroup=scssMapParens start="[^:alpha:]\=\zs(\ze\(\s*$\|.\+:\)" end=")" contains=scssMapKey extend
 syn match scssMapKey "[^: ]\+\ze[:]" contained contains=css.*Attr,cssString.*,scssVariable nextgroup=scssMapValue
 syn match scssMapValue "[^,)]\+\ze[,)]" contained contains=cssColor,css.*Prop,cssString.*,scssBoolean,scssFunction,scssNull,scssVariable
 
@@ -206,6 +206,7 @@ hi def link scssInterpolationDelimiter Delimiter
 hi def link scssImport    Include
 hi def link scssTodo      Todo
 hi def link scssAtRoot    Keyword
+hi def link scssMapParens Delimiter
 
 let b:current_syntax = "scss"
 if main_syntax == 'scss'
