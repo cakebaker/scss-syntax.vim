@@ -813,6 +813,12 @@ $a: $b + $c; // issue #4: variables should be displayed with the same color
   color:red;
 }
 
+// issue #43
+.rich {
+  .figure[style*="float: left"] {} // <-- this should look the same as...
+  .figure[style*="float:left"] {}  // <-- this
+}
+
 @font-face {  // issue #47 a) syntax within font-face block is not highlighted (plus this comment is not recognized as comment)
   $a: ('a', 'b');
 
