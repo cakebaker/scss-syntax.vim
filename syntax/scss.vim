@@ -2,7 +2,7 @@
 " Language:    SCSS (Sassy CSS)
 " Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
 " URL:         https://github.com/cakebaker/scss-syntax.vim
-" Last Change: 2015-03-13
+" Last Change: 2015-03-14
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
@@ -115,10 +115,10 @@ syn keyword scssNestedProperty contained break spacing wrap nextgroup=scssAttrib
 syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" end="}" contains=cssValue.*,cssColor,cssString.*,scssFunction,scssVariable containedin=cssComment,cssInclude,cssString.*,cssURL,scssFunction
 
 " ignores the url() function so it can be handled by css.vim
-syn region scssFunction contained matchgroup=scssFunctionName start="\<\(url(\)\@!\([[:alnum:]-]\)\+\s*(" skip=+([^)]*)+ end=")" keepend extend containedin=cssMediaType
+syn region scssFunction contained matchgroup=scssFunctionName start="\<\(url(\)\@!\([[:alnum:]-]\)\+\s*(" skip=+([^)]*)+ end=")" keepend extend containedin=cssInclude,cssMediaType
 syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=css.*Attr,cssColor,cssString.*,cssValue.*,scssBoolean,scssFunction,scssMap,scssNull,scssVariable
 
-syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction,cssMediaBlock,cssMediaType nextgroup=scssVariableAssignment skipwhite
+syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction,cssInclude,cssMediaBlock,cssMediaType nextgroup=scssVariableAssignment skipwhite
 syn match scssVariableAssignment ":" contained nextgroup=scssVariableValue skipwhite
 syn region scssVariableValue start="" end="\ze[;)]" contained contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssBoolean,scssDefault,scssFunction,scssInterpolation,scssNull,scssVariable,scssMap,scssGlobal,scssAmpersand
 syn match scssGlobal "!global" contained
