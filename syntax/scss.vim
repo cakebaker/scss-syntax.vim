@@ -2,7 +2,7 @@
 " Language:    SCSS (Sassy CSS)
 " Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
 " URL:         https://github.com/cakebaker/scss-syntax.vim
-" Last Change: 2015-03-16
+" Last Change: 2015-03-17
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
@@ -125,6 +125,7 @@ syn match scssGlobal "!global" contained
 
 syn keyword scssNull null contained
 syn keyword scssBoolean true false contained
+syn keyword scssBooleanOp and or not contained
 
 syn match scssMixin "^@mixin" nextgroup=scssMixinName skipwhite
 syn match scssMixinName "[[:alnum:]_-]\+" contained nextgroup=scssDefinition,scssMixinParams
@@ -155,7 +156,7 @@ syn match scssOutput "[^;]\+" contained contains=cssValue.*,cssString.*,scssFunc
 syn match scssDefault "!default" contained
 
 syn match scssIf "@\=if" nextgroup=scssCondition
-syn match scssCondition "[^{]\+" contained contains=cssValue.*,cssString.*,scssBoolean,scssFunction,scssNull,scssVariable,scssAmpersand
+syn match scssCondition "[^{]\+" contained contains=cssValue.*,cssString.*,scssBoolean,scssBooleanOp,scssFunction,scssNull,scssVariable,scssAmpersand
 syn match scssElse "@else" nextgroup=scssIf
 syn match scssElse "@else\(\s*\({\|$\)\)\@="
 syn match scssWhile "@while" nextgroup=scssCondition
@@ -181,6 +182,7 @@ hi def link scssVariable  Identifier
 hi def link scssGlobal    Special
 hi def link scssNull      Constant
 hi def link scssBoolean   Constant
+hi def link scssBooleanOp Operator
 hi def link scssMixin     PreProc
 hi def link scssMixinName Function
 hi def link scssContent   PreProc

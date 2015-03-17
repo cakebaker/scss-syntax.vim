@@ -951,6 +951,11 @@ $m: fn((key: value));
 $m: (key: "string");
 $m: (key: "string with spaces");
 
+// boolean operators are not recognized
+@if $a and $b {}
+@if $a or $b {}
+@if not $a {}
+
 div {
   height: 10px;
 }
