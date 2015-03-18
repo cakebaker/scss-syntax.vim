@@ -2,7 +2,7 @@
 " Language:    SCSS (Sassy CSS)
 " Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
 " URL:         https://github.com/cakebaker/scss-syntax.vim
-" Last Change: 2015-03-17
+" Last Change: 2015-03-18
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
@@ -116,7 +116,7 @@ syn region scssInterpolation matchgroup=scssInterpolationDelimiter start="#{" en
 
 " ignores the url() function so it can be handled by css.vim
 syn region scssFunction contained matchgroup=scssFunctionName start="\<\(url(\)\@!\([[:alnum:]-]\)\+\s*(" skip=+([^)]*)+ end=")" keepend extend containedin=cssInclude,cssMediaType
-syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=css.*Attr,cssColor,cssString.*,cssValue.*,scssBoolean,scssFunction,scssMap,scssNull,scssVariable
+syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction contains=css.*Attr,cssColor,cssString.*,cssValue.*,scssBoolean,scssFunction,scssInterpolation,scssMap,scssNull,scssVariable
 
 syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction,cssInclude,cssMediaBlock,cssMediaType nextgroup=scssVariableAssignment skipwhite
 syn match scssVariableAssignment ":" contained nextgroup=scssVariableValue skipwhite

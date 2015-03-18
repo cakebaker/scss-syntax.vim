@@ -956,6 +956,10 @@ $m: (key: "string with spaces");
 @if $a or $b {}
 @if not $a {}
 
+// interpolation is not recognized
+$a: oo;
+$b: fn(f#{$a});
+
 div {
   height: 10px;
 }
