@@ -960,6 +960,11 @@ $m: (key: "string with spaces");
 $a: oo;
 $b: fn(f#{$a});
 
+// comment is not recognized
+a {
+  /* a comment */
+}
+
 div {
   height: 10px;
 }
