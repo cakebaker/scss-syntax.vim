@@ -956,6 +956,10 @@ $m: (key: "string with spaces");
 @if $a or $b {}
 @if not $a {}
 
+@function fn($a, $b, $c, $d) {
+  @return $a or $b and $c and not $d;
+}
+
 // interpolation is not recognized
 $a: oo;
 $b: fn(f#{$a});
