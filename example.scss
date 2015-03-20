@@ -969,6 +969,11 @@ a {
   /* a comment */
 }
 
+// multiple extends are not recognized
+.class {
+    @extend .classA, .classB, .classC;
+}
+
 div {
   height: 10px;
 }
