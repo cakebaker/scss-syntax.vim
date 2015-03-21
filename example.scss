@@ -941,11 +941,16 @@ html > body.contacts {
   $padding-horiz: 0.4rem;
 }
 
-// issue #57: comments inside multi-line map are not recognized
+// issue #57 a) comments inside multi-line map are not recognized
 $breakpoints: (
   wp-adminbar-mobile: 783px,  // comment not highlighted
   desktop: 60em,              /* comment not highlighted */
 );
+
+// issue #57 b) comments inside multi-line list are not recognized
+$list: "1",  /* comment not highlighted */
+"2",         // comment not highlighted
+"3";
 
 // function is not recognized in map
 $m: (key: fn());
