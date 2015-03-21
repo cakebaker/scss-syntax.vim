@@ -2,7 +2,7 @@
 " Language:    SCSS (Sassy CSS)
 " Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
 " URL:         https://github.com/cakebaker/scss-syntax.vim
-" Last Change: 2015-03-20
+" Last Change: 2015-03-21
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
@@ -166,7 +166,7 @@ syn region scssEach matchgroup=scssEachKeyword start="@each" end="in" contains=s
 syn region scssCollection start=" " end="\ze{" contained contains=scssFunction,scssMap,scssVariable
 syn cluster scssControl contains=scssIf,scssElse,scssWhile,scssFor,scssEach
 
-syn region scssMap matchgroup=scssMapParens start="[^:alpha:]\=\zs(\ze\(\s*$\|.\+:\)" end=")" contains=scssMapKey extend
+syn region scssMap matchgroup=scssMapParens start="[^:alpha:]\=\zs(\ze\(\s*$\|.\+:\)" end=")" contains=cssComment,scssComment,scssMapKey extend
 syn match scssMapKey "[^: ]\+\ze[:]" contained contains=css.*Attr,cssString.*,scssVariable nextgroup=scssMapValue
 syn match scssMapValue "[^,)]\+\ze[,)]" contained contains=cssColor,css.*Prop,cssString.*,cssValueLength,scssBoolean,scssFunction,scssNull,scssVariable
 
