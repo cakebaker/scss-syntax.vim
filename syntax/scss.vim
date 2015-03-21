@@ -34,9 +34,9 @@ if v:version < 704
 endif
 
 " override @font-face blocks to allow scss elements inside
-syn region cssFontDescriptorBlock contained transparent matchgroup=cssBraces start="{" end="}" contains=cssComment,cssError,cssUnicodeEscape,cssFontProp,cssFontAttr,cssCommonAttr,cssStringQ,cssStringQQ,cssFontDescriptorProp,cssValue.*,cssFontDescriptorFunction,cssUnicodeRange,cssFontDescriptorAttr,scssComment,scssDefinition,scssFunction,scssVariable,@scssControl,scssDebug,scssError,scssWarn
+syn region cssFontDescriptorBlock contained transparent matchgroup=cssBraces start="{" end="}" contains=cssError,cssUnicodeEscape,cssFontProp,cssFontAttr,cssCommonAttr,cssStringQ,cssStringQQ,cssFontDescriptorProp,cssValue.*,cssFontDescriptorFunction,cssUnicodeRange,cssFontDescriptorAttr,@comment,scssDefinition,scssFunction,scssVariable,@scssControl,scssDebug,scssError,scssWarn
 
-syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=cssComment,cssInclude,cssFontDescriptor,scssAtRootStatement,scssComment,scssDefinition,scssProperty,scssSelector,scssVariable,scssImport,scssExtend,scssInclude,scssFunction,@scssControl,scssWarn,scssError,scssDebug,scssReturn containedin=cssMediaBlock fold
+syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=cssInclude,cssFontDescriptor,scssAtRootStatement,@comment,scssDefinition,scssProperty,scssSelector,scssVariable,scssImport,scssExtend,scssInclude,scssFunction,@scssControl,scssWarn,scssError,scssDebug,scssReturn containedin=cssMediaBlock fold
 
 syn match scssSelector _^\zs\([^:@]\|:[^ ]\|['"].*['"]\)\+{\@=_ contained contains=@scssSelectors
 syn match scssSelector "^\s*\zs\([^:@{]\|:[^ ]\|['"].*['"]\)\+\_$" contained contains=@scssSelectors
@@ -48,7 +48,7 @@ syn match scssProperty "\([[:alnum:]-]\)\+\s*\(:\)\@=" contained contains=css.*P
 syn match scssAttribute ":[^;]*;" contained contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssFunction,scssInterpolation,scssVariable
 
 syn match scssAttributeWithNestedDefinition ": [^#]*{\@=" nextgroup=scssNestedDefinition contained contains=css.*Attr,cssValue.*,scssVariable
-syn region scssNestedDefinition matchgroup=cssBraces start="{" end="}" contained contains=cssComment,scssComment,scssProperty,scssNestedProperty
+syn region scssNestedDefinition matchgroup=cssBraces start="{" end="}" contained contains=@comment,scssProperty,scssNestedProperty
 
 " CSS properties from https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
 " align
@@ -120,7 +120,7 @@ syn match scssParameterList ".*" contained containedin=cssFunction,scssFunction 
 
 syn match scssVariable "$[[:alnum:]_-]\+" containedin=cssFunction,scssFunction,cssInclude,cssMediaBlock,cssMediaType nextgroup=scssVariableAssignment skipwhite
 syn match scssVariableAssignment ":" contained nextgroup=scssVariableValue skipwhite
-syn region scssVariableValue start="" end="\ze[;)]" contained contains=cssComment,css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssBoolean,scssDefault,scssFunction,scssInterpolation,scssNull,scssVariable,scssMap,scssGlobal,scssAmpersand,scssComment
+syn region scssVariableValue start="" end="\ze[;)]" contained contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssBoolean,scssDefault,scssFunction,scssInterpolation,scssNull,scssVariable,scssMap,scssGlobal,scssAmpersand,@comment
 syn match scssGlobal "!global" contained
 
 syn keyword scssNull null contained
@@ -166,7 +166,7 @@ syn region scssEach matchgroup=scssEachKeyword start="@each" end="in" contains=s
 syn region scssCollection start=" " end="\ze{" contained contains=scssFunction,scssMap,scssVariable
 syn cluster scssControl contains=scssIf,scssElse,scssWhile,scssFor,scssEach
 
-syn region scssMap matchgroup=scssMapParens start="[^:alpha:]\=\zs(\ze\(\s*$\|.\+:\)" end=")" contains=cssComment,scssComment,scssMapKey extend
+syn region scssMap matchgroup=scssMapParens start="[^:alpha:]\=\zs(\ze\(\s*$\|.\+:\)" end=")" contains=@comment,scssMapKey extend
 syn match scssMapKey "[^: ]\+\ze[:]" contained contains=css.*Attr,cssString.*,scssVariable nextgroup=scssMapValue
 syn match scssMapValue "[^,)]\+\ze[,)]" contained contains=cssColor,css.*Prop,cssString.*,cssValueLength,scssBoolean,scssFunction,scssNull,scssVariable
 
@@ -175,7 +175,8 @@ syn match scssAtRoot "@at-root" contained
 syn match scssAtRoot "(\zswith\(out\)\=\ze:" contained
 
 syn match scssComment "//.*$" contains=@Spell containedin=cssMediaBlock
-syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=cssComment,scssComment
+syn cluster comment contains=cssComment,scssComment
+syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=@comment
 
 hi def link scssNestedProperty cssProp
 hi def link scssVariable  Identifier
