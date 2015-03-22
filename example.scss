@@ -985,6 +985,9 @@ a {
     @extend .classA, .classB, .classC;
 }
 
+// function with underscores is not recognized
+$a: fn_with_underscores();
+
 div {
   height: 10px;
 }
