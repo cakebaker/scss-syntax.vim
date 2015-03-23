@@ -988,6 +988,11 @@ a {
 // function with underscores is not recognized
 $a: fn_with_underscores();
 
+// interpolation is not recognized inside function
+@function stringConcatCompassStyle($start,$last) {
+    @return #{$start}-#{$last};
+}
+
 div {
   height: 10px;
 }
