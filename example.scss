@@ -957,6 +957,11 @@ $a: (
   "string"
 );
 
+// issue #60: first comment is not recognized
+@mixin _setup-panel-title( // comment
+  $colors
+) {} // comment
+
 // function is not recognized in map
 $m: (key: fn());
 
