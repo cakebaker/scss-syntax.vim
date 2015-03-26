@@ -957,10 +957,17 @@ $a: (
   "string"
 );
 
-// issue #60: first comment is not recognized
+// issue #60 a) first comment is not recognized
 @mixin _setup-panel-title( // comment
   $colors
 ) {} // comment
+
+// issue #60 b) indented comment containing a "{" is not recognized
+@mixin m() {
+// { comment
+  // { another comment
+  // yet another comment
+}
 
 // function is not recognized in map
 $m: (key: fn());
