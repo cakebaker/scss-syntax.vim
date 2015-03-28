@@ -1019,6 +1019,11 @@ $a: fn_with_underscores();
     @return "string";
 }
 
+// null and boolean values are not recognized as parameters
+.foo {
+    @include myMixin(20, null, true, false);
+}
+
 div {
   height: 10px;
 }
