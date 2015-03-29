@@ -1024,6 +1024,10 @@ $a: fn_with_underscores();
     @include myMixin(20, null, true, false);
 }
 
+// interpolation is not recognized in pseudo-selector
+$scope: 2;
+div.element:nth-child(#{$scope}n) {}
+
 div {
   height: 10px;
 }
