@@ -1028,6 +1028,11 @@ $a: fn_with_underscores();
 $scope: 2;
 div.element:nth-child(#{$scope}n) {}
 
+// URL is not recognized
+.foo {
+  @include wallpaper(url(/images/logo.png));
+}
+
 div {
   height: 10px;
 }
