@@ -1033,6 +1033,10 @@ div.element:nth-child(#{$scope}n) {}
   @include wallpaper(url(/images/logo.png));
 }
 
+// the exclamation mark of sticky comments should be highlighted
+/*! sticky comment */
+/* ! not a sticky comment */
+
 div {
   height: 10px;
 }

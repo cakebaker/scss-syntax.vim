@@ -2,7 +2,7 @@
 " Language:    SCSS (Sassy CSS)
 " Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
 " URL:         https://github.com/cakebaker/scss-syntax.vim
-" Last Change: 2015-04-08
+" Last Change: 2015-04-09
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
@@ -176,6 +176,7 @@ syn match scssAtRoot "(\zswith\(out\)\=\ze:" contained
 
 syn match scssComment "//.*$" contains=@Spell containedin=cssMediaBlock
 syn cluster comment contains=cssComment,scssComment
+syn match scssStickyCommentChar "^\/\*\zs!" contained containedin=cssComment
 syn keyword scssTodo TODO FIXME NOTE OPTIMIZE XXX contained containedin=@comment
 
 hi def link scssNestedProperty cssProp
@@ -194,6 +195,7 @@ hi def link scssInclude   PreProc
 hi def link scssExtend    PreProc
 hi def link scssOptional  Special
 hi def link scssComment   Comment
+hi def link scssStickyCommentChar Special
 hi def link scssSelectorChar Special
 hi def link scssSelectorName Identifier
 hi def link scssAmpersand Character
