@@ -1010,6 +1010,11 @@ $a: fn_with_underscores();
     @return #{$start}-#{$last};
 }
 
+@function stringConcatCompassStyle($start,$last)
+{
+    @return #{$start}-#{$last};
+}
+
 @function fn($x) {
     @if $x {
         // string is not recognized
