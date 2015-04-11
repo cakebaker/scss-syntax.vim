@@ -1042,6 +1042,11 @@ div.element:nth-child(#{$scope}n) {}
 /*! sticky comment */
 /* ! not a sticky comment */
 
+// params are not recognized if there is whitespace between function name and params
+@function test ($a, $b: $a/2) {
+    @return $b;
+}
+
 div {
   height: 10px;
 }

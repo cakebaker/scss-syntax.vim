@@ -2,7 +2,7 @@
 " Language:    SCSS (Sassy CSS)
 " Author:      Daniel Hofstetter (daniel.hofstetter@42dh.com)
 " URL:         https://github.com/cakebaker/scss-syntax.vim
-" Last Change: 2015-04-10
+" Last Change: 2015-04-11
 " Inspired by the syntax files for sass and css. Thanks to the authors of
 " those files!
 
@@ -133,8 +133,9 @@ syn region scssMixinParams contained contains=css.*Attr,cssColor,cssValue.*,cssS
 syn match scssInclude "@include" nextgroup=scssMixinName skipwhite containedin=cssMediaBlock
 syn match scssContent "@content" contained containedin=scssDefinition
 
-syn match scssFunctionDefinition "^@function" nextgroup=scssFunctionName skipwhite
-syn match scssFunctionName "[[:alnum:]_-]\+" contained nextgroup=scssFunctionParams
+syn match scssFunctionDefinition "^@function" nextgroup=scssFunctionNameWithWhitespace skipwhite
+syn match scssFunctionNameWithWhitespace "[[:alnum:]_-]\+\s*" contained contains=scssFunctionName nextgroup=scssFunctionParams
+syn match scssFunctionName "[[:alnum:]_-]\+" contained
 syn region scssFunctionParams contained start="(" end=")" nextgroup=scssFunctionBody contains=scssVariable skipwhite
 syn region scssFunctionBody contained matchgroup=cssBraces start="{" end="}" contains=cssString.*,cssValue.*,@scssControl,scssBooleanOp,scssComment,scssVariable,scssReturn,scssFunction,scssDebug,scssError,scssWarn,scssDefinition,scssInterpolation fold
 syn match scssReturn "@return" contained
