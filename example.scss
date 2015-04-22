@@ -1047,6 +1047,10 @@ div.element:nth-child(#{$scope}n) {}
     @return $b;
 }
 
+// attributes not terminated by a semicolon should be recognized
+a { color: red }
+a { color: red;}
+
 div {
   height: 10px;
 }
