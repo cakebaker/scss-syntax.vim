@@ -1,0 +1,9 @@
+{
+  "name" : "scss.vim",
+  "version" : "0.9",
+  "author" : "Daniel Hofstetter <daniel.hofstetter@42dh.com>",
+  "maintainer": "ObserverOfTime <chronobserver@disroot.org",
+  "repository" : {"type": "git", "url": "git://github.com/ObserverOfTime/scss.vim.git"},
+  "dependencies" : {},
+  "description" : "Vim syntax file for scss (Sassy CSS)"
+}
