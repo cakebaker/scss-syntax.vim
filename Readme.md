@@ -15,6 +15,12 @@ Plugin 'cakebaker/scss-syntax.vim'
 
 Afterwards, run `:PluginInstall` in Vim.
 
+### Pathogen
+
+```Bash
+git clone https://github.com/cakebaker/scss-syntax.vim ~/.vim/bundle/scss-syntax
+```
+
 ### Manual
 
 * Download [scss.vim](https://github.com/cakebaker/scss-syntax.vim/archive/master.zip)
