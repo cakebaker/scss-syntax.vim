@@ -2,7 +2,7 @@
 
 ## Installation
 
-I recommend to use a plugin manager like [Vundle](https://github.com/gmarik/vundle) for the installation.
+I recommend to use a plugin manager like [Vundle](https://github.com/VundleVim/Vundle.vim) for the installation.
 
 ### Vundle
 
