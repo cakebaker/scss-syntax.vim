@@ -46,7 +46,7 @@ syn cluster scssSelectors contains=@comment,cssSelectorOp,cssTagName,cssPseudoCl
 
 syn match scssProperty "\([[:alnum:]-]\)\+\s*\(:\)\@=" contained contains=css.*Prop,cssVendor containedin=cssMediaBlock nextgroup=scssAttribute,scssAttributeWithNestedDefinition
 syn match scssAttribute ":[^;]*\ze\(;\|}\)" contained contains=css.*Attr,cssValue.*,cssColor,cssFunction,cssString.*,cssURL,scssFunction,scssInterpolation,scssVariable
-syn match scssSemicolon ";$" containedin=scssDefinition
+syn match scssSemicolon ";" containedin=scssDefinition
 
 syn match scssAttributeWithNestedDefinition ": [^#"]*{\@=" nextgroup=scssNestedDefinition contained contains=css.*Attr,cssValue.*,scssVariable
 syn region scssNestedDefinition matchgroup=cssBraces start="{" end="}" contained contains=@comment,scssProperty,scssNestedProperty
