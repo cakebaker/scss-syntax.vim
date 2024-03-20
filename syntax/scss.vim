@@ -145,9 +145,14 @@ syn match scssExtendedSelector "[^;]\+" contained contains=cssTagName,cssPseudoC
 syn match scssOptional "!optional" contained
 
 syn match scssImport "@import" nextgroup=scssUrlList
-syn match scssForward "@forward" nextgroup=scssUrlList
-syn match scssUse "@use" nextgroup=scssUrlList
-syn match scssUrlList "[^;]\+" contained contains=cssString.*,cssMediaType,cssURL
+syn match scssImportList "[^;]\+" contained contains=cssString.*,cssMediaType,cssURL
+
+syn match scssForward "@forward" nextgroup=scssForwardUseParameters
+syn match scssUse "@use" nextgroup=scssForwardUseParameters
+syn match scssForwardUseParameters "[^;]\+" contained contains=cssString.*,cssMediaType,cssURL,scssAs
+
+syn match scssAs "as" contained nextgroup=scssNamespace
+syn match scssNamespace "[^;]\+" contained
 
 syn match scssSelectorChar "\(#\|\.\|%\)\([[:alnum:]_-]\|#{.*}\)\@=" nextgroup=scssSelectorName containedin=cssMediaBlock,cssPseudoClassFn
 syn match scssSelectorName "\([[:alnum:]_-]\|#{[^}]*}\)\+" contained contains=scssInterpolation
@@ -217,6 +222,9 @@ hi def link scssInterpolationDelimiter Delimiter
 hi def link scssImport    Include
 hi def link scssForward   Include
 hi def link scssUse       Include
+hi def link scssAs        Include
+hi def link scssWith      Include
+hi def link scssNamespace Identifier
 hi def link scssTodo      Todo
 hi def link scssAtRoot    Keyword
 hi def link scssMapParens Delimiter
