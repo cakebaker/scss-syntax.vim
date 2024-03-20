@@ -1,8 +1,12 @@
 // @forward and @use
 @forward "foo.scss";
 @use "foo.scss";
+
 @forward "bar.scss" as bar-*;
 @use "bar.scss" as *;
+
+@forward "baz.scss" with ($grey: #a4a4a4);
+@use "baz.scss" with ($grey: #686868);
 
 // Nested Rules
 
