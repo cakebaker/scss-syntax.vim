@@ -1,3 +1,7 @@
+// @forward and @use
+@forward "foobar.scss";
+@use "foobar.scss";
+
 // Nested Rules
 
 #main p {
