@@ -149,10 +149,12 @@ syn match scssImportList "[^;]\+" contained contains=cssString.*,cssMediaType,cs
 
 syn match scssForward "@forward" nextgroup=scssForwardUseParameters
 syn match scssUse "@use" nextgroup=scssForwardUseParameters
-syn match scssForwardUseParameters "[^;]\+" contained contains=cssString.*,cssMediaType,cssURL,scssAs
+syn match scssForwardUseParameters "[^;]\+" contained contains=cssString.*,cssMediaType,cssURL,scssAs,scssWith
 
 syn match scssAs "as" contained nextgroup=scssNamespace
 syn match scssNamespace "[^;]\+" contained
+
+syn match scssWith "with" contained
 
 syn match scssSelectorChar "\(#\|\.\|%\)\([[:alnum:]_-]\|#{.*}\)\@=" nextgroup=scssSelectorName containedin=cssMediaBlock,cssPseudoClassFn
 syn match scssSelectorName "\([[:alnum:]_-]\|#{[^}]*}\)\+" contained contains=scssInterpolation
