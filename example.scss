@@ -1,6 +1,8 @@
 // @forward and @use
-@forward "foobar.scss";
-@use "foobar.scss";
+@forward "foo.scss";
+@use "foo.scss";
+@forward "bar.scss" as bar-*;
+@use "bar.scss" as *;
 
 // Nested Rules
 
