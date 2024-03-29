@@ -144,7 +144,7 @@ syn match scssExtend "@extend" nextgroup=scssExtendedSelector skipwhite containe
 syn match scssExtendedSelector "[^;]\+" contained contains=cssTagName,cssPseudoClass,scssOptional,scssSelectorChar skipwhite
 syn match scssOptional "!optional" contained
 
-syn match scssImport "@import" nextgroup=scssUrlList
+syn match scssImport "@import" nextgroup=scssImportList
 syn match scssImportList "[^;]\+" contained contains=cssString.*,cssMediaType,cssURL
 
 syn match scssForward "@forward" nextgroup=scssForwardUseParameters
