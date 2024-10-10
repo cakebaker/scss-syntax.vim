@@ -36,7 +36,7 @@ endif
 " override @font-face blocks to allow scss elements inside
 syn region cssFontDescriptorBlock contained transparent matchgroup=cssBraces start="{" end="}" contains=cssError,cssUnicodeEscape,cssFontProp,cssFontAttr,cssCommonAttr,cssStringQ,cssStringQQ,cssFontDescriptorProp,cssValue.*,cssFontDescriptorFunction,cssUnicodeRange,cssFontDescriptorAttr,@comment,scssDefinition,scssFunction,scssVariable,@scssControl,scssDebug,scssError,scssWarn
 
-syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=cssString.*,cssInclude,cssFontDescriptor,scssAtRootStatement,@comment,scssDefinition,scssProperty,scssSelector,scssVariable,scssImport,scssExtend,scssInclude,scssInterpolation,scssFunction,@scssControl,scssWarn,scssError,scssDebug,scssReturn containedin=cssMediaBlock fold
+syn region scssDefinition matchgroup=cssBraces start='{' end='}' contains=cssString.*,cssInclude,cssFontDescriptor,scssAtRootStatement,@comment,scssDefinition,scssProperty,scssSelector,scssVariable,scssImport,scssForward,scssUse,scssExtend,scssInclude,scssInterpolation,scssFunction,@scssControl,scssWarn,scssError,scssDebug,scssReturn containedin=cssMediaBlock fold
 
 syn match scssSelector _^\zs\([^:@]\|:[^ ]\|['"].*['"]\)\+{\@=_ contained contains=@scssSelectors
 syn match scssSelector "^\s*\zs\([^:@{]\|:[^ ]\|['"].*['"]\)\+\_$" contained contains=@scssSelectors
@@ -143,8 +143,18 @@ syn match scssReturn "@return" contained
 syn match scssExtend "@extend" nextgroup=scssExtendedSelector skipwhite containedin=cssMediaBlock
 syn match scssExtendedSelector "[^;]\+" contained contains=cssTagName,cssPseudoClass,scssOptional,scssSelectorChar skipwhite
 syn match scssOptional "!optional" contained
+
 syn match scssImport "@import" nextgroup=scssImportList
 syn match scssImportList "[^;]\+" contained contains=cssString.*,cssMediaType,cssURL
+
+syn match scssForward "@forward" nextgroup=scssForwardUseParameters
+syn match scssUse "@use" nextgroup=scssForwardUseParameters
+syn match scssForwardUseParameters "[^;]\+" contained contains=cssString.*,cssMediaType,cssURL,scssAs,scssWith
+
+syn match scssAs "as" contained nextgroup=scssNamespace
+syn match scssNamespace "[^;]\+" contained
+
+syn match scssWith "with" contained
 
 syn match scssSelectorChar "\(#\|\.\|%\)\([[:alnum:]_-]\|#{.*}\)\@=" nextgroup=scssSelectorName containedin=cssMediaBlock,cssPseudoClassFn
 syn match scssSelectorName "\([[:alnum:]_-]\|#{[^}]*}\)\+" contained contains=scssInterpolation
@@ -212,6 +222,11 @@ hi def link scssForKeyword  Repeat
 hi def link scssEachKeyword Repeat
 hi def link scssInterpolationDelimiter Delimiter
 hi def link scssImport    Include
+hi def link scssForward   Include
+hi def link scssUse       Include
+hi def link scssAs        Include
+hi def link scssWith      Include
+hi def link scssNamespace Identifier
 hi def link scssTodo      Todo
 hi def link scssAtRoot    Keyword
 hi def link scssMapParens Delimiter
